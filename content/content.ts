@@ -65,12 +65,12 @@ export const meta: Record<PageKey, Record<Lang, { title: string; description: st
     es: {
       title: "Páginas web, tiendas en línea y automatización · Damian Lonare",
       description:
-        "Landing pages desde $4,500 MXN, sitios de 5 páginas desde $8,000 MXN, tiendas en línea, sistemas a la medida y automatización para negocios.",
+        "Landing pages desde $4,500 MXN, sitios de 5 páginas desde $8,000 MXN, tiendas en línea desde $6,500 MXN, sistemas a la medida y automatización para negocios.",
     },
     en: {
       title: "Websites, online stores and automation · Damian Lonare",
       description:
-        "Landing pages from $4,500 MXN, 5-page websites from $8,000 MXN, online stores, custom systems and automation for businesses.",
+        "Landing pages from $4,500 MXN, 5-page websites from $8,000 MXN, online stores from $6,500 MXN, custom systems and automation for businesses.",
     },
   },
   hire: {
@@ -203,7 +203,7 @@ export const software = {
     services: [
       { id: "", title: "Landing page", body: "Una página para presentar tu negocio y recibir clientes por WhatsApp.", price: "$4,500", unit: "MXN", from: true },
       { id: "", title: "Sitio web de 5 páginas", body: "Inicio, servicios, galería, nosotros y contacto. En WordPress, para que lo edites tú.", price: "$8,000", unit: "MXN", from: true },
-      { id: "", title: "Tienda en línea", body: "Vende tus productos con catálogo, carrito y pagos con tarjeta o transferencia.", price: "Se cotiza", unit: "según tu catálogo", from: false },
+      { id: "", title: "Tienda en línea", body: "Desde un catálogo que te manda los pedidos por WhatsApp hasta una tienda completa con carrito y pagos con tarjeta, transferencia u OXXO.", price: "$6,500", unit: "MXN", from: true },
       { id: "", title: "Sistema o app a la medida", body: "Reservas, inventario, pagos en línea, paneles con tus números.", price: "Se cotiza", unit: "según el proyecto", from: false },
       { id: "automatizacion", title: "Automatización", body: "Cotizaciones que se arman solas, recordatorios por WhatsApp a tus clientes y reportes que llegan a tu correo.", price: "Se cotiza", unit: "según el proceso", from: false },
       { id: "", title: "Mantenimiento", body: "Actualizaciones, respaldos y cambios pequeños cada mes.", price: "$1,200", unit: "MXN al mes", from: false },
@@ -253,7 +253,7 @@ export const software = {
     services: [
       { id: "", title: "Landing page", body: "One page to present your business and get customers on WhatsApp.", price: "$4,500", unit: "MXN", from: true },
       { id: "", title: "5-page website", body: "Home, services, gallery, about and contact. Built in WordPress so you can edit it.", price: "$8,000", unit: "MXN", from: true },
-      { id: "", title: "Online store", body: "Sell your products with a catalog, a cart, and card or bank-transfer payments.", price: "Quoted", unit: "per catalog", from: false },
+      { id: "", title: "Online store", body: "From a catalog that sends orders to your WhatsApp to a full store with a cart and card, bank-transfer or OXXO payments.", price: "$6,500", unit: "MXN", from: true },
       { id: "", title: "Custom system or app", body: "Bookings, inventory, online payments, dashboards with your numbers.", price: "Quoted", unit: "per project", from: false },
       { id: "automatizacion", title: "Automation", body: "Quotes that put themselves together, WhatsApp reminders for your customers, and reports that land in your inbox.", price: "Quoted", unit: "per process", from: false },
       { id: "", title: "Maintenance", body: "Updates, backups and small changes every month.", price: "$1,200", unit: "MXN a month", from: false },
