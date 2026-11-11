@@ -82,6 +82,11 @@ a { color: inherit; }
   padding: clamp(3.5rem, 10vw, 7rem) clamp(1.25rem, 5vw, 4rem) 2rem;
   max-width: 1100px; margin: 0 auto;
 }
+.photo {
+  display: block; width: 132px; height: 132px; border-radius: 50%; object-fit: cover; object-position: 50% 18%;
+  border: 2px solid var(--line); margin-bottom: 1.5rem;
+}
+@media (min-width: 900px) { .photo { float: right; width: 200px; height: 200px; margin: 0.5rem 0 1.5rem 2.5rem; } .facts, .wave { clear: both; } }
 .status {
   display: inline-flex; align-items: center; gap: 0.5rem;
   font-size: 0.8rem; color: var(--muted);

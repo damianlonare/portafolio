@@ -29,6 +29,7 @@ export default function Site({ lang }: { lang: Lang }) {
 
       <main id="top">
         <section className="hero">
+          <img className="photo" src={links.photo} alt={c.hero.photoAlt} width={132} height={132} />
           <p className="status">
             <span className="dot" /> {c.hero.status}
           </p>
@@ -41,7 +42,7 @@ export default function Site({ lang }: { lang: Lang }) {
               {c.hero.ctaPrimary}
             </a>
             {cv && (
-              <a className="btn" href={cv} {...ext}>
+              <a className="btn" href={cv} download {...ext}>
                 {c.hero.ctaCv}
               </a>
             )}
@@ -209,7 +210,7 @@ export default function Site({ lang }: { lang: Lang }) {
               </a>
             )}
             {cv && (
-              <a className="btn" href={cv} {...ext}>
+              <a className="btn" href={cv} download {...ext}>
                 {c.contact.cv}
               </a>
             )}

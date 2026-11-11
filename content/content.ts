@@ -12,7 +12,8 @@ export const links = {
   linkedin: "https://www.linkedin.com/in/pedro-damian-l-290586159",
   github: "https://github.com/damianlonare",
   repo: "https://github.com/damianlonare/portafolio",
-  cv: { es: "", en: "" }, // link al PDF de cada idioma
+  cv: { es: "/cv/Damian-Longoria-CV.pdf", en: "/cv/Damian-Longoria-Resume.pdf" },
+  photo: "/damian.jpg",
   music: "", // canal o perfil de Lonare
 };
 
@@ -39,6 +40,7 @@ export type Content = {
     status: string;
     kicker: string;
     name: string;
+    photoAlt: string;
     title: string;
     sub: string;
     ctaPrimary: string;
@@ -81,23 +83,24 @@ export const content: Record<Lang, Content> = {
     switchLabel: "Read in English",
     theme: { toLight: "Cambiar a tema claro", toDark: "Cambiar a tema oscuro" },
     meta: {
-      title: "Damian Longoria · Frontend Engineer (React / TypeScript)",
+      title: "Damian Longoria · Senior Frontend Engineer (React / TypeScript)",
       description:
-        "Frontend Engineer con más de 6 años en React y TypeScript. Experimentación A/B para un retailer Fortune 500 de EE.UU. Remoto desde Monterrey, México.",
+        "Senior Frontend Engineer con más de 9 años en React y TypeScript. Experimentación A/B para The Home Depot. Remoto desde Monterrey, México.",
     },
     nav: { skills: "Stack", experience: "Experiencia", work: "Proyectos", services: "Servicios", contact: "Contacto" },
     hero: {
       status: "Disponible para roles remotos y proyectos freelance",
-      kicker: "Frontend Engineer · React / TypeScript",
+      kicker: "Senior Frontend Engineer · React / Vue / TypeScript",
       name: "Damian Longoria",
+      photoAlt: "Foto de Damian Longoria",
       title: "Construyo interfaces en React para productos con mucho tráfico.",
-      sub: "Más de 6 años desarrollando frontend. Lo más reciente: experimentación A/B para el e-commerce de un retailer Fortune 500 de EE.UU., en un equipo que trabaja 100% en inglés.",
+      sub: "Más de 9 años construyendo plataformas web para clientes como The Home Depot, AB InBev (Grupo Modelo), AMIB y Fundación BBVA. Lo más reciente: el sistema de pruebas A/B de homedepot.com, en un equipo que trabaja 100% en inglés.",
       ctaPrimary: "Contactar",
       ctaCv: "Descargar CV",
       ctaLinkedin: "LinkedIn",
       ctaGithub: "GitHub",
       facts: [
-        { label: "Experiencia", value: "6+ años en frontend" },
+        { label: "Experiencia", value: "9+ años en desarrollo web" },
         { label: "Enfoque", value: "React · TypeScript · Next.js" },
         { label: "Idiomas", value: "Español nativo · Inglés profesional" },
         { label: "Ubicación", value: "Monterrey, México · UTC−6" },
@@ -109,8 +112,8 @@ export const content: Record<Lang, Content> = {
       intro: "Lo que uso en el trabajo, agrupado por qué tanto lo domino.",
       groups: [
         { title: "Día a día", items: ["React", "TypeScript", "JavaScript", "Next.js", "HTML", "CSS"] },
-        { title: "También trabajo con", items: ["Vue", "Node.js", "Python", "WordPress", "Git"] },
-        { title: "Experimentación y contenido", items: ["Adobe Target", "Akamai EdgeWorkers", "Contentful"] },
+        { title: "También trabajo con", items: ["Vue 3", "Angular", "Node.js", "AWS Lambda", "GraphQL", "Python"] },
+        { title: "Experimentación y calidad", items: ["Adobe Target", "Akamai EdgeWorkers", "Contentful", "Jest", "React Testing Library"] },
         { title: "Visual y video", items: ["Remotion", "Three.js", "Canvas", "FFmpeg"] },
       ],
     },
@@ -118,23 +121,36 @@ export const content: Record<Lang, Content> = {
       title: "Experiencia",
       items: [
         {
-          when: "2025 – presente",
-          what: "Sr React Engineer",
-          where: "Dexian México · asignado a un retailer Fortune 500 de EE.UU.",
+          when: "Nov 2025 – Nov 2026",
+          what: "Senior React Engineer",
+          where: "Dexian · asignado a The Home Depot (EE. UU.) · remoto, 100% en inglés",
           points: [
-            "Equipo de Experimentation: construyo variantes de interfaz en React para pruebas A/B en un sitio de e-commerce de alto tráfico.",
-            "Sirvo las variantes desde el edge con Akamai EdgeWorkers y las configuro y mido en Adobe Target.",
-            "Trabajo diario en inglés con un equipo en Estados Unidos.",
+            "Construí y mantuve el sistema de experimentación con Akamai EdgeWorkers y Adobe Target con el que otros equipos de producto corrían pruebas A/B en homedepot.com.",
+            "Entregué experimentos sobre ubicación de productos, anuncios de Google, layouts y orden de resultados de búsqueda para ver qué opciones vendían más.",
+            "Llevé los lanzamientos de principio a fin con el proceso de RFC de Home Depot, validando en staging, beta y producción.",
           ],
         },
         {
-          when: "2020 – 2025",
-          what: "Frontend / Backend Developer",
-          where: "Sngular",
+          when: "Sep 2020 – Oct 2025",
+          what: "Desarrollador Frontend y Backend",
+          where: "Sngular · clientes: Grupo Modelo (AB InBev), AMIB, Fundación BBVA",
           points: [
-            "Cinco años en consultoría de software, desarrollando frontend y backend para clientes de distintos sectores.",
-            "Proyectos en React, Vue y Node.js.",
+            "Grupo Modelo: procesador de pagos en React para las tiendas Modelorama, frontend con Gatsby, TypeScript, Redux y GraphQL, y una librería de componentes sobre Ant Design.",
+            "Microservicios serverless en Node.js con AWS Lambda, SNS/SQS y DynamoDB; pruebas con Jest y React Testing Library.",
+            "AMIB: frontend en Angular y API en Node.js para pagos de certificaciones. Fundación BBVA: frontend en Vue 3 y Pinia.",
           ],
+        },
+        {
+          when: "Jun 2019 – Jul 2020",
+          what: "Desarrollador Full-Stack",
+          where: "FDI Connect",
+          points: ["Plataforma de e-commerce B2B con Vue, PHP/Symfony y MySQL: inventario, tiendas por proveedor, cupones y pagos con Conekta."],
+        },
+        {
+          when: "May 2017 – Jun 2019",
+          what: "Desarrollador Frontend",
+          where: "Foodi",
+          points: ["Frontend en React/Redux de un marketplace con múltiples vendedores, más una app móvil en Ionic."],
         },
       ],
       educationTitle: "Formación",
@@ -149,8 +165,8 @@ export const content: Record<Lang, Content> = {
       labels: { problem: "El reto", role: "Mi parte", result: "Resultado", stack: "Stack" },
       items: [
         {
-          tag: "Empresa · 2025–2026",
-          title: "Experimentación A/B para un retailer Fortune 500",
+          tag: "The Home Depot · 2025–2026",
+          title: "Experimentación A/B en The Home Depot",
           problem:
             "El equipo de Experimentation necesitaba lanzar y medir variantes de la interfaz en un sitio de altísimo tráfico, sin afectar el rendimiento ni la experiencia de compra.",
           role:
@@ -226,23 +242,24 @@ export const content: Record<Lang, Content> = {
     switchLabel: "Leer en español",
     theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
     meta: {
-      title: "Damian Longoria · Frontend Engineer (React / TypeScript)",
+      title: "Damian Longoria · Senior Frontend Engineer (React / TypeScript)",
       description:
-        "Frontend Engineer with 6+ years in React and TypeScript. A/B experimentation for a US Fortune 500 retailer. Remote from Monterrey, Mexico (UTC−6).",
+        "Senior Frontend Engineer with 9+ years in React and TypeScript. A/B experimentation for The Home Depot. Remote from Monterrey, Mexico (UTC−6).",
     },
     nav: { skills: "Stack", experience: "Experience", work: "Work", services: "Services", contact: "Contact" },
     hero: {
       status: "Open to remote roles and freelance projects",
-      kicker: "Frontend Engineer · React / TypeScript",
+      kicker: "Senior Frontend Engineer · React / Vue / TypeScript",
       name: "Damian Longoria",
+      photoAlt: "Photo of Damian Longoria",
       title: "I build React interfaces for high-traffic products.",
-      sub: "6+ years in frontend development. Most recently: A/B experimentation for a US Fortune 500 retailer's e-commerce site, on a team that works fully in English.",
+      sub: "9+ years building web platforms for clients like The Home Depot, AB InBev (Grupo Modelo), AMIB and Fundación BBVA. Most recently: the A/B testing system behind homedepot.com, on a team that works fully in English.",
       ctaPrimary: "Get in touch",
       ctaCv: "Download résumé",
       ctaLinkedin: "LinkedIn",
       ctaGithub: "GitHub",
       facts: [
-        { label: "Experience", value: "6+ years in frontend" },
+        { label: "Experience", value: "9+ years in web development" },
         { label: "Focus", value: "React · TypeScript · Next.js" },
         { label: "Languages", value: "Professional English · Native Spanish" },
         { label: "Location", value: "Monterrey, Mexico · UTC−6 (US Central)" },
@@ -254,8 +271,8 @@ export const content: Record<Lang, Content> = {
       intro: "What I use at work, grouped by how deep I go.",
       groups: [
         { title: "Day to day", items: ["React", "TypeScript", "JavaScript", "Next.js", "HTML", "CSS"] },
-        { title: "Also work with", items: ["Vue", "Node.js", "Python", "WordPress", "Git"] },
-        { title: "Experimentation & content", items: ["Adobe Target", "Akamai EdgeWorkers", "Contentful"] },
+        { title: "Also work with", items: ["Vue 3", "Angular", "Node.js", "AWS Lambda", "GraphQL", "Python"] },
+        { title: "Experimentation & quality", items: ["Adobe Target", "Akamai EdgeWorkers", "Contentful", "Jest", "React Testing Library"] },
         { title: "Visual & video", items: ["Remotion", "Three.js", "Canvas", "FFmpeg"] },
       ],
     },
@@ -263,23 +280,36 @@ export const content: Record<Lang, Content> = {
       title: "Experience",
       items: [
         {
-          when: "2025 – present",
-          what: "Sr React Engineer",
-          where: "Dexian México · assigned to a US Fortune 500 retailer",
+          when: "Nov 2025 – Nov 2026",
+          what: "Senior React Engineer",
+          where: "Dexian · assigned to The Home Depot (USA) · remote, 100% English",
           points: [
-            "Experimentation team: I build React UI variants for A/B tests on a high-traffic e-commerce site.",
-            "I serve the variants at the edge with Akamai EdgeWorkers, and set them up and measure them in Adobe Target.",
-            "Day-to-day work in English with a US-based team.",
+            "Built and maintained the experimentation system on Akamai EdgeWorkers and Adobe Target that other product teams used to run A/B tests on homedepot.com.",
+            "Delivered experiments on product placement, Google ads, layouts and search-result rankings to see which options sold more.",
+            "Owned releases end to end through Home Depot's RFC process, validating across staging, beta and production.",
           ],
         },
         {
-          when: "2020 – 2025",
-          what: "Frontend / Backend Developer",
-          where: "Sngular",
+          when: "Sep 2020 – Oct 2025",
+          what: "Frontend & Backend Developer",
+          where: "Sngular · clients: Grupo Modelo (AB InBev), AMIB, Fundación BBVA",
           points: [
-            "Five years in software consulting, building frontend and backend for clients across industries.",
-            "Projects in React, Vue and Node.js.",
+            "Grupo Modelo: a React payment processor for Modelorama stores, a frontend in Gatsby, TypeScript, Redux and GraphQL, and a component library on Ant Design.",
+            "Node.js serverless microservices with AWS Lambda, SNS/SQS and DynamoDB; testing with Jest and React Testing Library.",
+            "AMIB: Angular frontend and Node.js API for certification payments. Fundación BBVA: frontend in Vue 3 and Pinia.",
           ],
+        },
+        {
+          when: "Jun 2019 – Jul 2020",
+          what: "Full-Stack Developer",
+          where: "FDI Connect",
+          points: ["B2B e-commerce platform in Vue, PHP/Symfony and MySQL: inventory, per-supplier storefronts, coupons and Conekta payments."],
+        },
+        {
+          when: "May 2017 – Jun 2019",
+          what: "Frontend Developer",
+          where: "Foodi",
+          points: ["React/Redux frontend for a multi-vendor marketplace, plus an Ionic mobile app."],
         },
       ],
       educationTitle: "Education",
@@ -294,8 +324,8 @@ export const content: Record<Lang, Content> = {
       labels: { problem: "Challenge", role: "My part", result: "Outcome", stack: "Stack" },
       items: [
         {
-          tag: "Enterprise · 2025–2026",
-          title: "A/B experimentation for a Fortune 500 retailer",
+          tag: "The Home Depot · 2025–2026",
+          title: "A/B experimentation at The Home Depot",
           problem:
             "The Experimentation team needed to ship and measure UI variants on a very high-traffic site without hurting performance or the shopping experience.",
           role:
