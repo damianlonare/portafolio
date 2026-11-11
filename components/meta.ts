@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { content, SITE_URL, type Lang } from "@/content/content";
+import { meta, routes, SITE_URL, type Lang, type PageKey } from "@/content/content";
 
-export function buildMetadata(lang: Lang): Metadata {
-  const c = content[lang];
+export function buildMetadata(lang: Lang, page: PageKey): Metadata {
+  const m = meta[page][lang];
+  const path = routes[page][lang];
   return {
     metadataBase: new URL(SITE_URL),
-    title: c.meta.title,
-    description: c.meta.description,
+    title: m.title,
+    description: m.description,
     alternates: {
-      canonical: c.path,
-      languages: { es: "/", en: "/en/", "x-default": "/en/" },
+      canonical: path,
+      languages: { es: routes[page].es, en: routes[page].en, "x-default": routes[page].es },
     },
     openGraph: {
-      title: c.meta.title,
-      description: c.meta.description,
-      url: c.path,
+      title: m.title,
+      description: m.description,
+      url: path,
       type: "website",
       locale: lang === "es" ? "es_MX" : "en_US",
     },

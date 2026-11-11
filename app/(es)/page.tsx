@@ -1,5 +1,8 @@
-import Site from "@/components/Site";
+import { HomePage } from "@/components/pages";
+import { buildMetadata } from "@/components/meta";
+
+export const metadata = buildMetadata("es", "home");
 
 export default function Page() {
-  return <Site lang="es" />;
+  return <HomePage lang="es" />;
 }

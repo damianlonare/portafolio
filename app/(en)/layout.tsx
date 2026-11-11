@@ -1,9 +1,6 @@
 import type { Viewport } from "next";
 import "../globals.css";
-import { buildMetadata } from "@/components/meta";
 import { themeScript } from "@/components/theme-script";
-
-export const metadata = buildMetadata("en");
 
 export const viewport: Viewport = {
   themeColor: [
@@ -17,6 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body>{children}</body>
     </html>

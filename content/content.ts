@@ -1,396 +1,403 @@
 // Todo el texto del sitio vive aquí, en español e inglés.
-// Edita este archivo y no tienes que tocar componentes.
+// Las páginas solo acomodan este contenido; para cambiar un texto o un precio, edita este archivo.
 
 export type Lang = "es" | "en";
+export type PageKey = "home" | "software" | "hire";
 
 export const SITE_URL = "https://damianlonare.com";
+
+const WHATSAPP = "528123524173";
+export const whatsappLink = (text: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
 // Deja en "" lo que todavía no tengas: el sitio oculta ese botón o link.
 export const links = {
   email: "",
-  whatsapp: "https://wa.me/528123524173",
   linkedin: "https://www.linkedin.com/in/pedro-damian-l-290586159",
   github: "https://github.com/damianlonare",
-  repo: "https://github.com/damianlonare/portafolio",
   cv: { es: "/cv/Damian-Longoria-CV.pdf", en: "/cv/Damian-Longoria-Resume.pdf" },
   photo: "/damian.jpg",
-  music: "", // canal o perfil de Lonare
 };
 
-type Case = {
-  tag: string;
-  title: string;
-  problem: string;
-  role: string;
-  result?: string;
-  stack: string[];
-  link?: string;
-  linkLabel?: string;
+// Rutas de cada página en cada idioma.
+export const routes: Record<PageKey, Record<Lang, string>> = {
+  home: { es: "/", en: "/en/" },
+  software: { es: "/software/", en: "/en/software/" },
+  hire: { es: "/contratar/", en: "/en/hire/" },
 };
 
-export type Content = {
-  path: string;
-  altPath: string;
-  switchLang: string;
-  switchLabel: string;
-  theme: { toLight: string; toDark: string };
-  meta: { title: string; description: string };
-  nav: { skills: string; experience: string; work: string; services: string; contact: string };
-  hero: {
-    status: string;
-    kicker: string;
-    name: string;
-    photoAlt: string;
-    title: string;
-    sub: string;
-    ctaPrimary: string;
-    ctaCv: string;
-    ctaLinkedin: string;
-    ctaGithub: string;
-    facts: { label: string; value: string }[];
-  };
-  skills: { title: string; intro: string; groups: { title: string; items: string[] }[] };
-  experience: {
-    title: string;
-    items: { when: string; what: string; where: string; points: string[] }[];
-    educationTitle: string;
-    education: { when: string; what: string; where: string }[];
-  };
-  work: {
-    title: string;
-    intro: string;
-    labels: { problem: string; role: string; result: string; stack: string };
-    items: Case[];
-  };
-  services: {
-    title: string;
-    intro: string;
-    items: { title: string; body: string }[];
-    processTitle: string;
-    process: { title: string; body: string }[];
-  };
-  about: { text: string; link: string };
-  contact: { title: string; body: string; whatsapp: string; email: string; cv: string };
-  footer: string;
-  footerRepo: string;
-};
-
-export const content: Record<Lang, Content> = {
+export const ui = {
   es: {
-    path: "/",
-    altPath: "/en/",
+    brand: "Damian Lonare",
+    nav: { software: "Software", hire: "Para reclutadores", contact: "Contacto" },
+    navLabel: "Principal",
     switchLang: "EN",
     switchLabel: "Read in English",
     theme: { toLight: "Cambiar a tema claro", toDark: "Cambiar a tema oscuro" },
-    meta: {
-      title: "Damian Longoria · Senior Frontend Engineer (React / TypeScript)",
-      description:
-        "Senior Frontend Engineer con más de 9 años en React y TypeScript. Experimentación A/B para The Home Depot. Remoto desde Monterrey, México.",
-    },
-    nav: { skills: "Stack", experience: "Experiencia", work: "Proyectos", services: "Servicios", contact: "Contacto" },
-    hero: {
-      status: "Disponible para roles remotos y proyectos freelance",
-      kicker: "Senior Frontend Engineer · React / Vue / TypeScript",
-      name: "Damian Longoria",
-      photoAlt: "Foto de Damian Longoria",
-      title: "Construyo interfaces en React para productos con mucho tráfico.",
-      sub: "Más de 9 años construyendo plataformas web para clientes como The Home Depot, AB InBev (Grupo Modelo), AMIB y Fundación BBVA. Lo más reciente: el sistema de pruebas A/B de homedepot.com, en un equipo que trabaja 100% en inglés.",
-      ctaPrimary: "Contactar",
-      ctaCv: "Descargar CV",
-      ctaLinkedin: "LinkedIn",
-      ctaGithub: "GitHub",
-      facts: [
-        { label: "Experiencia", value: "9+ años en desarrollo web" },
-        { label: "Enfoque", value: "React · TypeScript · Next.js" },
-        { label: "Idiomas", value: "Español nativo · Inglés profesional" },
-        { label: "Ubicación", value: "Monterrey, México · UTC−6" },
-        { label: "Modalidad", value: "Remoto · híbrido en Monterrey" },
-      ],
-    },
-    skills: {
-      title: "Stack",
-      intro: "Lo que uso en el trabajo, agrupado por qué tanto lo domino.",
-      groups: [
-        { title: "Día a día", items: ["React", "TypeScript", "JavaScript", "Next.js", "HTML", "CSS"] },
-        { title: "También trabajo con", items: ["Vue 3", "Angular", "Node.js", "AWS Lambda", "GraphQL", "Python"] },
-        { title: "Experimentación y calidad", items: ["Adobe Target", "Akamai EdgeWorkers", "Contentful", "Jest", "React Testing Library"] },
-        { title: "Visual y video", items: ["Remotion", "Three.js", "Canvas", "FFmpeg"] },
-      ],
-    },
-    experience: {
-      title: "Experiencia",
-      items: [
-        {
-          when: "Nov 2025 – Nov 2026",
-          what: "Senior React Engineer",
-          where: "Dexian · asignado a The Home Depot (EE. UU.) · remoto, 100% en inglés",
-          points: [
-            "Construí y mantuve el sistema de experimentación con Akamai EdgeWorkers y Adobe Target con el que otros equipos de producto corrían pruebas A/B en homedepot.com.",
-            "Entregué experimentos sobre ubicación de productos, anuncios de Google, layouts y orden de resultados de búsqueda para ver qué opciones vendían más.",
-            "Llevé los lanzamientos de principio a fin con el proceso de RFC de Home Depot, validando en staging, beta y producción.",
-          ],
-        },
-        {
-          when: "Sep 2020 – Oct 2025",
-          what: "Desarrollador Frontend y Backend",
-          where: "Sngular · clientes: Grupo Modelo (AB InBev), AMIB, Fundación BBVA",
-          points: [
-            "Grupo Modelo: procesador de pagos en React para las tiendas Modelorama, frontend con Gatsby, TypeScript, Redux y GraphQL, y una librería de componentes sobre Ant Design.",
-            "Microservicios serverless en Node.js con AWS Lambda, SNS/SQS y DynamoDB; pruebas con Jest y React Testing Library.",
-            "AMIB: frontend en Angular y API en Node.js para pagos de certificaciones. Fundación BBVA: frontend en Vue 3 y Pinia.",
-          ],
-        },
-        {
-          when: "Jun 2019 – Jul 2020",
-          what: "Desarrollador Full-Stack",
-          where: "FDI Connect",
-          points: ["Plataforma de e-commerce B2B con Vue, PHP/Symfony y MySQL: inventario, tiendas por proveedor, cupones y pagos con Conekta."],
-        },
-        {
-          when: "May 2017 – Jun 2019",
-          what: "Desarrollador Frontend",
-          where: "Foodi",
-          points: ["Frontend en React/Redux de un marketplace con múltiples vendedores, más una app móvil en Ionic."],
-        },
-      ],
-      educationTitle: "Formación",
-      education: [
-        { when: "En curso", what: "Ingeniería en Desarrollo de Software", where: "Universidad Ciudadana de Nuevo León" },
-        { when: "Carreras técnicas", what: "Desarrollo de Software · Paquetería Computacional", where: "UANL · FIME" },
-      ],
-    },
-    work: {
-      title: "Proyectos",
-      intro: "Pocos, pero contados completos: el reto y lo que hice.",
-      labels: { problem: "El reto", role: "Mi parte", result: "Resultado", stack: "Stack" },
-      items: [
-        {
-          tag: "The Home Depot · 2025–2026",
-          title: "Experimentación A/B en The Home Depot",
-          problem:
-            "El equipo de Experimentation necesitaba lanzar y medir variantes de la interfaz en un sitio de altísimo tráfico, sin afectar el rendimiento ni la experiencia de compra.",
-          role:
-            "Construí las variantes en React, las serví desde el edge con Akamai EdgeWorkers y las configuré y medí con Adobe Target. Contenido manejado con Contentful.",
-          stack: ["React", "TypeScript", "Adobe Target", "Akamai EdgeWorkers", "Contentful"],
-        },
-        {
-          tag: "Proyecto propio · 2026",
-          title: "Motor de video programático para música",
-          problem:
-            "Hacer un Reel o un lyric video por canción a mano se lleva horas. Quería un sistema que tome la canción y saque videos listos para publicar, sincronizados con el ritmo.",
-          role:
-            "Lo diseñé y programé completo: plantillas en React con Remotion, análisis de audio para detectar beats y secciones, y un pipeline con FFmpeg que entrega versiones para YouTube, Reels y Spotify.",
-          result: "Un motor reutilizable: cada canción nueva es un archivo de configuración, no código nuevo.",
-          stack: ["React", "Remotion", "TypeScript", "FFmpeg", "Python"],
-        },
-        {
-          tag: "Este sitio · 2026",
-          title: "damianlonare.com",
-          problem: "Un portafolio rápido, bilingüe y fácil de mantener, sin depender de un servidor.",
-          role:
-            "Next.js con exportación estática, una ruta por idioma con su propio metadata, todo el contenido tipado en un solo archivo y una animación en Canvas que reacciona al cursor. Desplegado en Cloudflare Pages.",
-          stack: ["Next.js", "TypeScript", "Canvas", "Cloudflare Pages"],
-          link: links.repo,
-          linkLabel: "Ver el código",
-        },
-      ],
-    },
-    services: {
-      title: "Servicios freelance",
-      intro: "También tomo proyectos directos con negocios o como parte del equipo de una agencia.",
-      items: [
-        {
-          title: "Frontend por proyecto",
-          body: "Me sumo a tu equipo o agencia para construir o mejorar apps en React, Next.js o Vue. Código limpio, tipado y fácil de mantener.",
-        },
-        {
-          title: "Sitios y landing pages",
-          body: "Sitios rápidos, que se ven bien en celular y con SEO básico listo. En Next.js o WordPress, según lo que te convenga mantener.",
-        },
-        {
-          title: "Video programático",
-          body: "Plantillas y generadores de video con Remotion y FFmpeg: Reels automáticos, visualizers, videos a partir de datos o guiones.",
-        },
-      ],
-      processTitle: "Cómo trabajo",
-      process: [
-        { title: "Platicamos", body: "Una llamada corta para entender qué necesitas y para cuándo." },
-        { title: "Propuesta", body: "Alcance claro y precio fijo o por hora. Sin sorpresas." },
-        { title: "Avances", body: "Te paso un link de preview cada semana para que veas cómo va." },
-        { title: "Entrega", body: "Código, documentación y una ronda de ajustes incluida." },
-      ],
-    },
-    about: {
-      text: "Fuera del código produzco música como Lonare. Por eso me late tanto lo visual y lo que se mueve: muchos de mis experimentos con video empiezan con una canción mía.",
-      link: "Escuchar Lonare",
-    },
-    contact: {
-      title: "¿Hablamos?",
-      body: "Para una vacante o un proyecto: escríbeme y te respondo en menos de 24 horas.",
-      whatsapp: "WhatsApp",
-      email: "Correo",
-      cv: "Descargar CV",
-    },
-    footer: "Hecho con Next.js y TypeScript por mí. Monterrey, México.",
-    footerRepo: "Código en GitHub",
+    footer: "Damian Lonare · Monterrey, México",
+    whatsapp: "Escríbeme por WhatsApp",
   },
-
   en: {
-    path: "/en/",
-    altPath: "/",
+    brand: "Damian Lonare",
+    nav: { software: "Software", hire: "For recruiters", contact: "Contact" },
+    navLabel: "Main",
     switchLang: "ES",
     switchLabel: "Leer en español",
     theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
-    meta: {
-      title: "Damian Longoria · Senior Frontend Engineer (React / TypeScript)",
+    footer: "Damian Lonare · Monterrey, Mexico",
+    whatsapp: "Message me on WhatsApp",
+  },
+};
+
+export const meta: Record<PageKey, Record<Lang, { title: string; description: string }>> = {
+  home: {
+    es: {
+      title: "Damian Lonare · Páginas web y automatización para negocios",
       description:
-        "Senior Frontend Engineer with 9+ years in React and TypeScript. A/B experimentation for The Home Depot. Remote from Monterrey, Mexico (UTC−6).",
+        "Ingeniero de software en Monterrey. Páginas web, tiendas en línea y automatización para negocios, con 9 años de experiencia en empresas como The Home Depot y Grupo Modelo.",
     },
-    nav: { skills: "Stack", experience: "Experience", work: "Work", services: "Services", contact: "Contact" },
-    hero: {
-      status: "Open to remote roles and freelance projects",
-      kicker: "Senior Frontend Engineer · React / Vue / TypeScript",
-      name: "Damian Longoria",
-      photoAlt: "Photo of Damian Longoria",
-      title: "I build React interfaces for high-traffic products.",
-      sub: "9+ years building web platforms for clients like The Home Depot, AB InBev (Grupo Modelo), AMIB and Fundación BBVA. Most recently: the A/B testing system behind homedepot.com, on a team that works fully in English.",
-      ctaPrimary: "Get in touch",
-      ctaCv: "Download résumé",
-      ctaLinkedin: "LinkedIn",
-      ctaGithub: "GitHub",
-      facts: [
-        { label: "Experience", value: "9+ years in web development" },
-        { label: "Focus", value: "React · TypeScript · Next.js" },
-        { label: "Languages", value: "Professional English · Native Spanish" },
-        { label: "Location", value: "Monterrey, Mexico · UTC−6 (US Central)" },
-        { label: "Work mode", value: "Remote" },
-      ],
+    en: {
+      title: "Damian Lonare · Websites and automation for businesses",
+      description:
+        "Software engineer in Monterrey, Mexico. Websites, online stores and automation for businesses, with 9 years of experience at companies like The Home Depot and Grupo Modelo.",
     },
-    skills: {
-      title: "Stack",
-      intro: "What I use at work, grouped by how deep I go.",
-      groups: [
-        { title: "Day to day", items: ["React", "TypeScript", "JavaScript", "Next.js", "HTML", "CSS"] },
-        { title: "Also work with", items: ["Vue 3", "Angular", "Node.js", "AWS Lambda", "GraphQL", "Python"] },
-        { title: "Experimentation & quality", items: ["Adobe Target", "Akamai EdgeWorkers", "Contentful", "Jest", "React Testing Library"] },
-        { title: "Visual & video", items: ["Remotion", "Three.js", "Canvas", "FFmpeg"] },
-      ],
+  },
+  software: {
+    es: {
+      title: "Páginas web, tiendas en línea y automatización · Damian Lonare",
+      description:
+        "Landing pages desde $4,500 MXN, sitios de 5 páginas desde $8,000 MXN, tiendas en línea, sistemas a la medida y automatización para negocios.",
     },
-    experience: {
-      title: "Experience",
-      items: [
-        {
-          when: "Nov 2025 – Nov 2026",
-          what: "Senior React Engineer",
-          where: "Dexian · assigned to The Home Depot (USA) · remote, 100% English",
-          points: [
-            "Built and maintained the experimentation system on Akamai EdgeWorkers and Adobe Target that other product teams used to run A/B tests on homedepot.com.",
-            "Delivered experiments on product placement, Google ads, layouts and search-result rankings to see which options sold more.",
-            "Owned releases end to end through Home Depot's RFC process, validating across staging, beta and production.",
-          ],
-        },
-        {
-          when: "Sep 2020 – Oct 2025",
-          what: "Frontend & Backend Developer",
-          where: "Sngular · clients: Grupo Modelo (AB InBev), AMIB, Fundación BBVA",
-          points: [
-            "Grupo Modelo: a React payment processor for Modelorama stores, a frontend in Gatsby, TypeScript, Redux and GraphQL, and a component library on Ant Design.",
-            "Node.js serverless microservices with AWS Lambda, SNS/SQS and DynamoDB; testing with Jest and React Testing Library.",
-            "AMIB: Angular frontend and Node.js API for certification payments. Fundación BBVA: frontend in Vue 3 and Pinia.",
-          ],
-        },
-        {
-          when: "Jun 2019 – Jul 2020",
-          what: "Full-Stack Developer",
-          where: "FDI Connect",
-          points: ["B2B e-commerce platform in Vue, PHP/Symfony and MySQL: inventory, per-supplier storefronts, coupons and Conekta payments."],
-        },
-        {
-          when: "May 2017 – Jun 2019",
-          what: "Frontend Developer",
-          where: "Foodi",
-          points: ["React/Redux frontend for a multi-vendor marketplace, plus an Ionic mobile app."],
-        },
-      ],
-      educationTitle: "Education",
-      education: [
-        { when: "In progress", what: "B.Eng. Software Development", where: "Universidad Ciudadana de Nuevo León" },
-        { when: "Technical degrees", what: "Software Development · Computer Applications", where: "UANL · FIME" },
-      ],
+    en: {
+      title: "Websites, online stores and automation · Damian Lonare",
+      description:
+        "Landing pages from $4,500 MXN, 5-page websites from $8,000 MXN, online stores, custom systems and automation for businesses.",
     },
-    work: {
-      title: "Selected work",
-      intro: "A few projects, told in full: the challenge and what I did.",
-      labels: { problem: "Challenge", role: "My part", result: "Outcome", stack: "Stack" },
-      items: [
-        {
-          tag: "The Home Depot · 2025–2026",
-          title: "A/B experimentation at The Home Depot",
-          problem:
-            "The Experimentation team needed to ship and measure UI variants on a very high-traffic site without hurting performance or the shopping experience.",
-          role:
-            "I built the variants in React, served them at the edge with Akamai EdgeWorkers, and set up and measured them in Adobe Target. Content managed in Contentful.",
-          stack: ["React", "TypeScript", "Adobe Target", "Akamai EdgeWorkers", "Contentful"],
-        },
-        {
-          tag: "Own project · 2026",
-          title: "Programmatic video engine for music",
-          problem:
-            "Making a Reel or lyric video by hand for every song takes hours. I wanted a system that takes a song and outputs ready-to-post videos synced to the beat.",
-          role:
-            "Designed and built it end to end: React templates with Remotion, audio analysis to detect beats and sections, and an FFmpeg pipeline that delivers versions for YouTube, Reels and Spotify.",
-          result: "A reusable engine: each new song is a config file, not new code.",
-          stack: ["React", "Remotion", "TypeScript", "FFmpeg", "Python"],
-        },
-        {
-          tag: "This site · 2026",
-          title: "damianlonare.com",
-          problem: "A fast, bilingual portfolio that's easy to maintain and needs no server.",
-          role:
-            "Next.js with static export, one route per language with its own metadata, all content typed in a single file, and a Canvas animation that reacts to the cursor. Deployed on Cloudflare Pages.",
-          stack: ["Next.js", "TypeScript", "Canvas", "Cloudflare Pages"],
-          link: links.repo,
-          linkLabel: "View the code",
-        },
-      ],
+  },
+  hire: {
+    es: {
+      title: "Pedro Damian Longoria · Senior Software Engineer",
+      description:
+        "Senior Software Engineer con 9 años de experiencia. Construyó el sistema de pruebas A/B de homedepot.com. Remoto desde Monterrey, México, en inglés.",
     },
-    services: {
-      title: "Freelance services",
-      intro: "I also take on projects directly with businesses or as part of an agency team.",
-      items: [
-        {
-          title: "Frontend contracting",
-          body: "I join your team or agency to build or improve React, Next.js or Vue apps. Clean, typed, maintainable code.",
-        },
-        {
-          title: "Websites & landing pages",
-          body: "Fast, mobile-first sites with basic SEO in place. Built in Next.js or WordPress, depending on what you want to maintain.",
-        },
-        {
-          title: "Programmatic video",
-          body: "Video templates and generators with Remotion and FFmpeg: automated Reels, visualizers, videos from data or scripts.",
-        },
-      ],
-      processTitle: "How I work",
-      process: [
-        { title: "Talk", body: "A short call to understand what you need and when." },
-        { title: "Proposal", body: "Clear scope, fixed or hourly price. No surprises." },
-        { title: "Progress", body: "A preview link every week so you can see where it's at." },
-        { title: "Delivery", body: "Code, docs and one round of tweaks included." },
-      ],
+    en: {
+      title: "Pedro Damian Longoria · Senior Software Engineer",
+      description:
+        "Senior Software Engineer with 9 years of experience. Built the A/B testing system behind homedepot.com. Remote from Monterrey, Mexico (UTC−6), works in English.",
     },
-    about: {
-      text: "Outside of code I make music as Lonare. That's why I'm into visual, moving things: a lot of my video experiments start with one of my songs.",
-      link: "Listen to Lonare",
-    },
-    contact: {
-      title: "Let's talk",
-      body: "For a role or a project: message me and I'll get back to you within 24 hours.",
-      whatsapp: "WhatsApp",
-      email: "Email",
-      cv: "Download résumé",
-    },
-    footer: "Built with Next.js and TypeScript by me. Monterrey, Mexico.",
-    footerRepo: "Source on GitHub",
+  },
+};
+
+export const clients = ["The Home Depot", "Grupo Modelo (AB InBev)", "Fundación BBVA", "AMIB"];
+
+export const home = {
+  es: {
+    kicker: "Ingeniero de software · Monterrey, México",
+    title: ["Construyo tu página web.", "Automatizo tu negocio."],
+    sub: "Llevo 9 años haciendo sitios y sistemas para empresas como The Home Depot y Grupo Modelo. Ahora hago lo mismo para negocios como el tuyo: cuéntame qué necesitas y te digo cómo lo hacemos.",
+    photoAlt: "Foto de Damian",
+    doorsTitle: "¿Qué necesitas?",
+    doors: [
+      {
+        icon: "screen",
+        title: "Una página web o una tienda",
+        body: "Páginas para tu negocio y tiendas en línea que se ven bien en celular y te traen clientes.",
+        note: "Desde $4,500 MXN",
+        cta: "Ver servicios de software",
+        to: "software" as PageKey,
+        hash: "",
+      },
+      {
+        icon: "auto",
+        title: "Automatizar mi negocio",
+        body: "Que lo repetitivo se haga solo: cotizaciones, recordatorios a clientes, reportes.",
+        note: "Se cotiza según el proceso",
+        cta: "Ver qué se puede automatizar",
+        to: "software" as PageKey,
+        hash: "#automatizacion",
+      },
+      {
+        icon: "brief",
+        title: "Estoy contratando",
+        body: "Senior Software Engineer con 9 años de experiencia. Trabajo remoto y en inglés.",
+        note: "Perfil en inglés y CV",
+        cta: "Ver perfil para reclutadores",
+        to: "hire" as PageKey,
+        hash: "",
+      },
+    ],
+    clientsLabel: "He trabajado en proyectos para",
+    processTitle: "Cómo trabajamos",
+    processSub: "Del primer mensaje a tu sitio publicado.",
+    stepLabel: "Paso",
+    process: [
+      { title: "Platicamos", body: "Me cuentas tu idea por WhatsApp o en una llamada corta." },
+      { title: "Te mando precio y fecha", body: "Por escrito, con lo que incluye y lo que no. Sin sorpresas." },
+      { title: "Arrancamos con 50%", body: "Ves avances durante el proyecto y pides hasta 2 rondas de cambios." },
+      { title: "Entrega", body: "Pagas el resto y recibes tu sitio publicado o tu sistema funcionando." },
+    ],
+    contactTitle: "¿Platicamos?",
+    contactBody: "Te respondo en menos de 24 horas.",
+    whatsappText: "Hola Damian, vi tu página y me interesa platicar sobre un proyecto.",
+  },
+  en: {
+    kicker: "Software engineer · Monterrey, Mexico",
+    title: ["I build your website.", "I automate your business."],
+    sub: "I've spent 9 years building websites and systems for companies like The Home Depot and Grupo Modelo. Now I do the same for businesses like yours: tell me what you need and I'll tell you how we'll do it.",
+    photoAlt: "Photo of Damian",
+    doorsTitle: "What do you need?",
+    doors: [
+      {
+        icon: "screen",
+        title: "A website or an online store",
+        body: "Websites for your business and online stores that look good on phones and bring you customers.",
+        note: "From $4,500 MXN",
+        cta: "See software services",
+        to: "software" as PageKey,
+        hash: "",
+      },
+      {
+        icon: "auto",
+        title: "Automate my business",
+        body: "Let the repetitive work run on its own: quotes, customer reminders, reports.",
+        note: "Quoted per process",
+        cta: "See what can be automated",
+        to: "software" as PageKey,
+        hash: "#automatizacion",
+      },
+      {
+        icon: "brief",
+        title: "I'm hiring",
+        body: "Senior Software Engineer with 9 years of experience. Remote, in English.",
+        note: "Profile and résumé",
+        cta: "See recruiter profile",
+        to: "hire" as PageKey,
+        hash: "",
+      },
+    ],
+    clientsLabel: "I've worked on projects for",
+    processTitle: "How we work",
+    processSub: "From the first message to your site going live.",
+    stepLabel: "Step",
+    process: [
+      { title: "We talk", body: "You tell me your idea on WhatsApp or in a short call." },
+      { title: "You get a price and a date", body: "In writing, with what's included and what isn't. No surprises." },
+      { title: "We start with 50%", body: "You see progress along the way and get up to 2 rounds of changes." },
+      { title: "Delivery", body: "You pay the rest and get your site live or your system running." },
+    ],
+    contactTitle: "Let's talk?",
+    contactBody: "I reply within 24 hours.",
+    whatsappText: "Hi Damian, I saw your website and I'd like to talk about a project.",
+  },
+};
+
+export const software = {
+  es: {
+    kicker: "Software para negocios",
+    title: "Tu negocio en internet, funcionando y vendiendo.",
+    sub: "Diseño y programo páginas web, tiendas en línea y sistemas a la medida, y automatizo las tareas repetitivas de tu negocio. Rápidos, que se ven bien en celular y que tú puedes actualizar.",
+    ctaPrimary: "Cotizar por WhatsApp",
+    ctaSecondary: "Ver proyectos",
+    pricesTitle: "Qué hago y cuánto cuesta",
+    pricesPill: "Precios de lanzamiento",
+    from: "desde",
+    services: [
+      { id: "", title: "Landing page", body: "Una página para presentar tu negocio y recibir clientes por WhatsApp.", price: "$4,500", unit: "MXN", from: true },
+      { id: "", title: "Sitio web de 5 páginas", body: "Inicio, servicios, galería, nosotros y contacto. En WordPress, para que lo edites tú.", price: "$8,000", unit: "MXN", from: true },
+      { id: "", title: "Tienda en línea", body: "Vende tus productos con catálogo, carrito y pagos con tarjeta o transferencia.", price: "Se cotiza", unit: "según tu catálogo", from: false },
+      { id: "", title: "Sistema o app a la medida", body: "Reservas, inventario, pagos en línea, paneles con tus números.", price: "Se cotiza", unit: "según el proyecto", from: false },
+      { id: "automatizacion", title: "Automatización", body: "Cotizaciones que se arman solas, recordatorios por WhatsApp a tus clientes y reportes que llegan a tu correo.", price: "Se cotiza", unit: "según el proceso", from: false },
+      { id: "", title: "Mantenimiento", body: "Actualizaciones, respaldos y cambios pequeños cada mes.", price: "$1,200", unit: "MXN al mes", from: false },
+    ],
+    includesTitle: "Todas incluyen",
+    includes: ["Diseño que se ve bien en celular", "Botón de WhatsApp y Google Maps", "Lo básico para salir en Google", "Ayuda con dominio y hosting"],
+    workTitle: "Proyectos",
+    workSub: "Contados en lo que resolvieron, no en la tecnología que usé.",
+    work: [
+      {
+        tag: "E-commerce · Estados Unidos",
+        title: "The Home Depot",
+        body: "Un sistema para probar dos versiones de una página de homedepot.com al mismo tiempo y quedarse con la que vende más. Otros equipos de la empresa lo usaban para sus propias pruebas.",
+      },
+      {
+        tag: "Tiendas · México",
+        title: "Grupo Modelo · Modelorama",
+        body: "El sistema con el que el personal de las tiendas Modelorama cobraba con tarjeta y pagaba a sus distribuidores.",
+      },
+      {
+        tag: "Fundaciones · México",
+        title: "Fundación BBVA",
+        body: "El portal con el que el equipo de la fundación administraba los donativos.",
+      },
+    ],
+    faqTitle: "Preguntas frecuentes",
+    faq: [
+      { q: "¿Cómo se paga?", a: "50% para empezar y 50% al entregar, por transferencia." },
+      { q: "No tengo dominio ni hosting, ¿qué hago?", a: "Te ayudo a contratarlos a tu nombre, para que siempre sean tuyos." },
+      { q: "¿Puedo cambiar los textos yo mismo?", a: "Sí. Si lo vas a editar tú, lo hago en WordPress y te enseño a usarlo." },
+      { q: "¿Qué se puede automatizar?", a: "Casi cualquier tarea que hagas igual cada día o cada semana. Cuéntame cómo la haces hoy y te digo si conviene automatizarla." },
+    ],
+    contactTitle: "Cuéntame de tu negocio",
+    contactBody: "Te respondo con una propuesta en menos de 24 horas.",
+    contactCta: "Cotizar por WhatsApp",
+    whatsappText: "Hola Damian, me interesa cotizar un proyecto para mi negocio.",
+  },
+  en: {
+    kicker: "Software for businesses",
+    title: "Your business online, working and selling.",
+    sub: "I design and build websites, online stores and custom systems, and automate the repetitive tasks in your business. Fast, good-looking on phones, and easy for you to update.",
+    ctaPrimary: "Get a quote on WhatsApp",
+    ctaSecondary: "See projects",
+    pricesTitle: "What I do and what it costs",
+    pricesPill: "Launch prices",
+    from: "from",
+    services: [
+      { id: "", title: "Landing page", body: "One page to present your business and get customers on WhatsApp.", price: "$4,500", unit: "MXN", from: true },
+      { id: "", title: "5-page website", body: "Home, services, gallery, about and contact. Built in WordPress so you can edit it.", price: "$8,000", unit: "MXN", from: true },
+      { id: "", title: "Online store", body: "Sell your products with a catalog, a cart, and card or bank-transfer payments.", price: "Quoted", unit: "per catalog", from: false },
+      { id: "", title: "Custom system or app", body: "Bookings, inventory, online payments, dashboards with your numbers.", price: "Quoted", unit: "per project", from: false },
+      { id: "automatizacion", title: "Automation", body: "Quotes that put themselves together, WhatsApp reminders for your customers, and reports that land in your inbox.", price: "Quoted", unit: "per process", from: false },
+      { id: "", title: "Maintenance", body: "Updates, backups and small changes every month.", price: "$1,200", unit: "MXN a month", from: false },
+    ],
+    includesTitle: "All of them include",
+    includes: ["A design that looks good on phones", "WhatsApp button and Google Maps", "The basics to show up on Google", "Help with domain and hosting"],
+    workTitle: "Projects",
+    workSub: "Told by what they solved, not by the tech I used.",
+    work: [
+      {
+        tag: "E-commerce · United States",
+        title: "The Home Depot",
+        body: "A system to show two versions of a homedepot.com page at the same time and keep the one that sells more. Other teams in the company used it for their own tests.",
+      },
+      {
+        tag: "Retail · Mexico",
+        title: "Grupo Modelo · Modelorama",
+        body: "The system Modelorama store staff used to take card payments and pay their distributors.",
+      },
+      {
+        tag: "Foundations · Mexico",
+        title: "Fundación BBVA",
+        body: "The portal the foundation's team used to manage donations.",
+      },
+    ],
+    faqTitle: "Frequently asked questions",
+    faq: [
+      { q: "How do I pay?", a: "50% to start and 50% on delivery, by bank transfer." },
+      { q: "I don't have a domain or hosting. What do I do?", a: "I help you get them in your name, so they're always yours." },
+      { q: "Can I change the text myself?", a: "Yes. If you'll be editing it, I build it in WordPress and show you how to use it." },
+      { q: "What can be automated?", a: "Almost any task you do the same way every day or every week. Tell me how you do it today and I'll tell you if it's worth automating." },
+    ],
+    contactTitle: "Tell me about your business",
+    contactBody: "I'll reply with a proposal within 24 hours.",
+    contactCta: "Get a quote on WhatsApp",
+    whatsappText: "Hi Damian, I'd like a quote for a project for my business.",
+  },
+};
+
+export const hire = {
+  en: {
+    kicker: "For recruiters and hiring managers",
+    name: "Pedro Damian Longoria",
+    role: "Senior Software Engineer · 9 years",
+    sub: "I build the parts of websites and web apps that people see and use. Most recently I built the system The Home Depot used to test new versions of homedepot.com and keep the ones that sold more. I work remotely from Mexico, in English, on US Central time.",
+    photoAlt: "Photo of Pedro Damian Longoria",
+    cv: "Download résumé (PDF)",
+    glanceTitle: "At a glance",
+    glance: [
+      { label: "Role", value: "Senior Frontend or Full-Stack Engineer" },
+      { label: "Experience", value: "9+ years (2017 – 2026)" },
+      { label: "Worked for", value: "The Home Depot, AB InBev (Grupo Modelo), Fundación BBVA, AMIB" },
+      { label: "English", value: "Professional, one year daily with a US team" },
+      { label: "Location", value: "Monterrey, Mexico · UTC−6" },
+      { label: "Work mode", value: "Remote · open to relocating" },
+      { label: "Education", value: "Software Development, UANL · B.Eng. in progress" },
+    ],
+    skillsTitle: "Skills",
+    skillsSub: "The keywords you may be screening for, with a line on what each group is for.",
+    skills: [
+      { title: "Frontend", body: "Building the screens people see and click.", items: ["React", "TypeScript", "JavaScript", "Next.js", "Vue 3", "Angular", "Redux", "GraphQL"] },
+      { title: "Backend and cloud", body: "The services and data behind the screens.", items: ["Node.js", "AWS Lambda", "DynamoDB", "PostgreSQL", "MySQL", "Docker"] },
+      { title: "Experimentation and quality", body: "Testing ideas with real users, and testing code before it ships.", items: ["A/B testing", "Adobe Target", "Akamai EdgeWorkers", "Jest", "React Testing Library", "Contentful"] },
+    ],
+    expTitle: "Experience",
+    exp: [
+      {
+        when: "Nov 2025 – Nov 2026",
+        what: "Senior React Engineer · Dexian",
+        where: "Assigned to The Home Depot (USA), Experimentation team · remote, in English",
+        body: "Built and ran the A/B testing system other product teams used on homedepot.com, and owned releases from staging to production.",
+      },
+      {
+        when: "Sep 2020 – Oct 2025",
+        what: "Frontend & Backend Developer · Sngular",
+        where: "Software consultancy · clients: Grupo Modelo (AB InBev), AMIB, Fundación BBVA",
+        body: "Built a card-payment system for Modelorama stores, serverless services on AWS, and admin portals in Angular and Vue.",
+      },
+      { when: "Jun 2019 – Jul 2020", what: "Full-Stack Developer · FDI Connect", where: "", body: "B2B online store with per-supplier storefronts, coupons and card payments." },
+      { when: "May 2017 – Jun 2019", what: "Frontend Developer · Foodi", where: "", body: "Multi-vendor marketplace on the web and a mobile app." },
+    ],
+    expMore: "Full details in the résumé (PDF)",
+    workTitle: "Selected work",
+    work: [
+      { tag: "The Home Depot", title: "A/B testing at the edge", body: "Let teams show two versions of a page to real shoppers and keep the one that sells more." },
+      { tag: "Grupo Modelo", title: "Payments for Modelorama stores", body: "Store staff took card payments and paid their distributors from one React app backed by AWS services." },
+      { tag: "Own project", title: "Video engine for music", body: "Turns a song into ready-to-post videos synced to the beat, built with React and Remotion." },
+    ],
+    contactTitle: "Hiring for a role?",
+    contactBody: "I reply within 24 hours.",
+    email: "Email me",
+    whatsappText: "Hi Damian, I'm reaching out about a software engineering role.",
+  },
+  es: {
+    kicker: "Para reclutadores y líderes de equipo",
+    name: "Pedro Damian Longoria",
+    role: "Senior Software Engineer · 9 años",
+    sub: "Construyo las partes de los sitios y aplicaciones web que la gente ve y usa. Lo más reciente: el sistema con el que The Home Depot probaba nuevas versiones de homedepot.com y se quedaba con las que vendían más. Trabajo remoto desde México, en inglés, en horario del centro de EE. UU.",
+    photoAlt: "Foto de Pedro Damian Longoria",
+    cv: "Descargar CV (PDF)",
+    glanceTitle: "En resumen",
+    glance: [
+      { label: "Puesto", value: "Senior Frontend o Full-Stack Engineer" },
+      { label: "Experiencia", value: "9+ años (2017 – 2026)" },
+      { label: "He trabajado para", value: "The Home Depot, AB InBev (Grupo Modelo), Fundación BBVA, AMIB" },
+      { label: "Inglés", value: "Profesional, un año diario con un equipo de EE. UU." },
+      { label: "Ubicación", value: "Monterrey, México · UTC−6" },
+      { label: "Modalidad", value: "Remoto · abierto a mudarme" },
+      { label: "Estudios", value: "Desarrollo de Software, UANL · Ingeniería en curso" },
+    ],
+    skillsTitle: "Habilidades",
+    skillsSub: "Las palabras clave que quizá estás buscando, con una línea de para qué sirve cada grupo.",
+    skills: [
+      { title: "Frontend", body: "Las pantallas que la gente ve y usa.", items: ["React", "TypeScript", "JavaScript", "Next.js", "Vue 3", "Angular", "Redux", "GraphQL"] },
+      { title: "Backend y nube", body: "Los servicios y los datos detrás de las pantallas.", items: ["Node.js", "AWS Lambda", "DynamoDB", "PostgreSQL", "MySQL", "Docker"] },
+      { title: "Experimentación y calidad", body: "Probar ideas con usuarios reales, y probar el código antes de lanzarlo.", items: ["Pruebas A/B", "Adobe Target", "Akamai EdgeWorkers", "Jest", "React Testing Library", "Contentful"] },
+    ],
+    expTitle: "Experiencia",
+    exp: [
+      {
+        when: "Nov 2025 – Nov 2026",
+        what: "Senior React Engineer · Dexian",
+        where: "Asignado a The Home Depot (EE. UU.), equipo de Experimentation · remoto, en inglés",
+        body: "Construí y operé el sistema de pruebas A/B que otros equipos de producto usaban en homedepot.com, y llevé los lanzamientos de staging a producción.",
+      },
+      {
+        when: "Sep 2020 – Oct 2025",
+        what: "Desarrollador Frontend y Backend · Sngular",
+        where: "Consultora de software · clientes: Grupo Modelo (AB InBev), AMIB, Fundación BBVA",
+        body: "Construí un sistema de cobro con tarjeta para las tiendas Modelorama, servicios serverless en AWS y portales administrativos en Angular y Vue.",
+      },
+      { when: "Jun 2019 – Jul 2020", what: "Desarrollador Full-Stack · FDI Connect", where: "", body: "Tienda en línea B2B con tiendas por proveedor, cupones y pagos con tarjeta." },
+      { when: "May 2017 – Jun 2019", what: "Desarrollador Frontend · Foodi", where: "", body: "Marketplace con múltiples vendedores en web y una app móvil." },
+    ],
+    expMore: "Todos los detalles en el CV (PDF)",
+    workTitle: "Proyectos destacados",
+    work: [
+      { tag: "The Home Depot", title: "Pruebas A/B en el edge", body: "Permitía a los equipos mostrar dos versiones de una página a compradores reales y quedarse con la que vendía más." },
+      { tag: "Grupo Modelo", title: "Pagos para tiendas Modelorama", body: "El personal cobraba con tarjeta y pagaba a sus distribuidores desde una app en React con servicios en AWS." },
+      { tag: "Proyecto propio", title: "Motor de video para música", body: "Convierte una canción en videos listos para publicar, sincronizados con el ritmo, hechos con React y Remotion." },
+    ],
+    contactTitle: "¿Tienes una vacante?",
+    contactBody: "Te respondo en menos de 24 horas.",
+    email: "Escríbeme",
+    whatsappText: "Hola Damian, te contacto por una vacante de desarrollo de software.",
   },
 };
