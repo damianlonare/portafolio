@@ -39,7 +39,7 @@ a { color: inherit; }
 .nav nav a:hover { color: var(--text); }
 .lang {
   font-family: var(--mono); font-size: 0.8rem; cursor: pointer;
-  background: none; color: var(--text);
+  background: none; color: var(--text); text-decoration: none;
   border: 1px solid var(--line); border-radius: 6px; padding: 0.3rem 0.6rem;
 }
 .lang:hover { border-color: var(--accent); }
@@ -74,7 +74,10 @@ a { color: inherit; }
 .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
 .btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .btn.primary:hover { background: var(--accent2); }
-.wave { display: block; width: 100%; height: 120px; margin-top: 3.5rem; touch-action: pan-y; }
+.facts { display: grid; gap: 1rem 2rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.facts dt { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+.facts dd { font-size: 0.95rem; margin-top: 0.15rem; }
+.wave { display: block; width: 100%; height: 90px; margin-top: 2.5rem; touch-action: pan-y; }
 
 /* SECTIONS */
 .section {
@@ -85,6 +88,13 @@ a { color: inherit; }
 .num { font-family: var(--mono); font-size: 0.9rem; color: var(--accent); vertical-align: middle; margin-right: 0.4rem; }
 .intro { color: var(--muted); margin-top: 0.5rem; max-width: 60ch; }
 .subhead { margin-top: 3rem; font-size: 1.1rem; }
+
+/* SKILLS */
+.skillgrid { display: grid; gap: 1.5rem 2rem; margin-top: 2rem; }
+@media (min-width: 800px) { .skillgrid { grid-template-columns: 1fr 1fr; } }
+.skillgrid h3 { font-size: 0.95rem; color: var(--muted); font-weight: 600; }
+.skillgrid .chips { margin-top: 0.6rem; }
+.points { list-style: disc; margin: 0.5rem 0 0 1.1rem; display: grid; gap: 0.3rem; color: #cfcadd; font-size: 0.93rem; }
 
 /* CASES */
 .cases { display: grid; gap: 1.25rem; margin-top: 2rem; }
@@ -126,15 +136,16 @@ a { color: inherit; }
 
 /* EXPERIENCE */
 .timeline { list-style: none; margin-top: 2rem; border-left: 1px solid var(--line); }
-.timeline li { position: relative; padding: 0 0 1.5rem 1.5rem; display: grid; gap: 0.2rem; }
-@media (min-width: 700px) { .timeline li { grid-template-columns: 170px 1fr; gap: 1rem; } }
-.timeline li::before {
+
+.timeline > li { position: relative; padding: 0 0 1.5rem 1.5rem; display: grid; gap: 0.2rem; }
+@media (min-width: 700px) { .timeline > li { grid-template-columns: 170px 1fr; gap: 1rem; } }
+.timeline > li::before {
   content: ""; position: absolute; left: -5px; top: 0.45rem;
   width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
 }
 .when { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); padding-top: 0.15rem; }
-.timeline div { display: grid; }
-.timeline div span { color: var(--muted); font-size: 0.92rem; }
+.timeline > li > div { display: grid; }
+.timeline > li > div > span { color: var(--muted); font-size: 0.92rem; }
 .about {
   margin-top: 2.5rem; padding: 1.25rem 1.5rem; border-radius: 14px;
   background: linear-gradient(120deg, rgba(167, 139, 250, 0.12), rgba(167, 139, 250, 0.02));
@@ -150,6 +161,7 @@ a { color: inherit; }
 .socials { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.75rem; }
 .socials a { color: var(--muted); text-decoration: none; font-family: var(--mono); font-size: 0.85rem; }
 .socials a:hover { color: var(--accent); }
+.footer a { color: var(--accent2); }
 .footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2rem 1rem; border-top: 1px solid var(--line); }
 
 @media (max-width: 640px) {

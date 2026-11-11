@@ -12,15 +12,14 @@ npm run build    # genera /out listo para subir
 
 ## Editar contenido
 
-Todo el texto (español e inglés) está en `content/content.ts`.
-Busca `[` para encontrar lo que falta llenar:
+Todo el texto está en `content/content.ts`, en español (`/`) y en inglés (`/en/`).
+Cada idioma es una ruta con su propio metadata, así que el link en inglés se puede compartir directo.
 
-- Métricas del caso del retailer (experimentos lanzados, impacto)
-- Métricas del motor de video (videos publicados, tiempo ahorrado) y link a la playlist
-- Proyecto destacado de la etapa de consultoría
-- Correo profesional, LinkedIn, YouTube y link al CV
+En `links`, lo que esté en `""` no se muestra. Falta llenar:
 
-Los links que siguen como `[placeholder]` se muestran como `#` para que no se rompan.
+- `cv.es` y `cv.en`: link al PDF del CV en cada idioma
+- `email`: correo profesional
+- `music`: canal o perfil de Lonare
 
 ## Publicar en Vercel (gratis)
 

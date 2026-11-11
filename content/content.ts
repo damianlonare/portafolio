@@ -1,44 +1,159 @@
-// Todo el texto del sitio vive aquí. Edita este archivo y no tienes que tocar componentes.
-// Busca "[" para encontrar los datos que faltan por llenar (métricas, links, correo).
+// Todo el texto del sitio vive aquí, en español e inglés.
+// Edita este archivo y no tienes que tocar componentes.
 
 export type Lang = "es" | "en";
 
+export const SITE_URL = "https://damianlonare.com";
+
+// Deja en "" lo que todavía no tengas: el sitio oculta ese botón o link.
 export const links = {
-  email: "[tu-correo-profesional@dominio.com]",
-  linkedin: "https://www.linkedin.com/in/[tu-usuario]",
+  email: "",
+  whatsapp: "https://wa.me/528123524173",
+  linkedin: "https://www.linkedin.com/in/pedro-damian-l-290586159",
   github: "https://github.com/damianlonare",
-  youtube: "https://www.youtube.com/@[lonare]",
-  cv: "#", // pon aquí el link a tu CV en PDF
+  repo: "https://github.com/damianlonare/portafolio",
+  cv: { es: "", en: "" }, // link al PDF de cada idioma
+  music: "", // canal o perfil de Lonare
 };
 
-export const content = {
+type Case = {
+  tag: string;
+  title: string;
+  problem: string;
+  role: string;
+  result?: string;
+  stack: string[];
+  link?: string;
+  linkLabel?: string;
+};
+
+export type Content = {
+  path: string;
+  altPath: string;
+  switchLang: string;
+  switchLabel: string;
+  meta: { title: string; description: string };
+  nav: { skills: string; experience: string; work: string; services: string; contact: string };
+  hero: {
+    status: string;
+    kicker: string;
+    name: string;
+    title: string;
+    sub: string;
+    ctaPrimary: string;
+    ctaCv: string;
+    ctaLinkedin: string;
+    ctaGithub: string;
+    facts: { label: string; value: string }[];
+  };
+  skills: { title: string; intro: string; groups: { title: string; items: string[] }[] };
+  experience: {
+    title: string;
+    items: { when: string; what: string; where: string; points: string[] }[];
+    educationTitle: string;
+    education: { when: string; what: string; where: string }[];
+  };
+  work: {
+    title: string;
+    intro: string;
+    labels: { problem: string; role: string; result: string; stack: string };
+    items: Case[];
+  };
+  services: {
+    title: string;
+    intro: string;
+    items: { title: string; body: string }[];
+    processTitle: string;
+    process: { title: string; body: string }[];
+  };
+  about: { text: string; link: string };
+  contact: { title: string; body: string; whatsapp: string; email: string; cv: string };
+  footer: string;
+  footerRepo: string;
+};
+
+export const content: Record<Lang, Content> = {
   es: {
-    nav: { work: "Proyectos", services: "Servicios", experience: "Experiencia", contact: "Contacto" },
+    path: "/",
+    altPath: "/en/",
+    switchLang: "EN",
+    switchLabel: "Read in English",
+    meta: {
+      title: "Damian Longoria · Frontend Engineer (React / TypeScript)",
+      description:
+        "Frontend Engineer con más de 6 años en React y TypeScript. Experimentación A/B para un retailer Fortune 500 de EE.UU. Remoto desde Monterrey, México.",
+    },
+    nav: { skills: "Stack", experience: "Experiencia", work: "Proyectos", services: "Servicios", contact: "Contacto" },
     hero: {
+      status: "Disponible para roles remotos y proyectos freelance",
       kicker: "Frontend Engineer · React / TypeScript",
       name: "Damian Longoria",
-      title: "Hago interfaces web que se sienten bien y video que se genera solo.",
-      sub: "Más de 6 años en React. Lo más reciente: experimentación A/B para el e-commerce de un retailer de EE.UU. con millones de visitas. En paralelo construyo herramientas de video programático con Remotion.",
-      ctaPrimary: "Ver proyectos",
-      ctaSecondary: "Hablemos",
-      status: "Disponible para proyectos freelance y roles remotos",
+      title: "Construyo interfaces en React para productos con mucho tráfico.",
+      sub: "Más de 6 años desarrollando frontend. Lo más reciente: experimentación A/B para el e-commerce de un retailer Fortune 500 de EE.UU., en un equipo que trabaja 100% en inglés.",
+      ctaPrimary: "Contactar",
+      ctaCv: "Descargar CV",
+      ctaLinkedin: "LinkedIn",
+      ctaGithub: "GitHub",
+      facts: [
+        { label: "Experiencia", value: "6+ años en frontend" },
+        { label: "Enfoque", value: "React · TypeScript · Next.js" },
+        { label: "Idiomas", value: "Español nativo · Inglés profesional" },
+        { label: "Ubicación", value: "Monterrey, México · UTC−6" },
+        { label: "Modalidad", value: "Remoto · híbrido en Monterrey" },
+      ],
+    },
+    skills: {
+      title: "Stack",
+      intro: "Lo que uso en el trabajo, agrupado por qué tanto lo domino.",
+      groups: [
+        { title: "Día a día", items: ["React", "TypeScript", "JavaScript", "Next.js", "HTML", "CSS"] },
+        { title: "También trabajo con", items: ["Vue", "Node.js", "Python", "WordPress", "Git"] },
+        { title: "Experimentación y contenido", items: ["Adobe Target", "Akamai EdgeWorkers", "Contentful"] },
+        { title: "Visual y video", items: ["Remotion", "Three.js", "Canvas", "FFmpeg"] },
+      ],
+    },
+    experience: {
+      title: "Experiencia",
+      items: [
+        {
+          when: "2025 – presente",
+          what: "Sr React Engineer",
+          where: "Dexian México · asignado a un retailer Fortune 500 de EE.UU.",
+          points: [
+            "Equipo de Experimentation: construyo variantes de interfaz en React para pruebas A/B en un sitio de e-commerce de alto tráfico.",
+            "Sirvo las variantes desde el edge con Akamai EdgeWorkers y las configuro y mido en Adobe Target.",
+            "Trabajo diario en inglés con un equipo en Estados Unidos.",
+          ],
+        },
+        {
+          when: "2020 – 2025",
+          what: "Frontend / Backend Developer",
+          where: "Sngular",
+          points: [
+            "Cinco años en consultoría de software, desarrollando frontend y backend para clientes de distintos sectores.",
+            "Proyectos en React, Vue y Node.js.",
+          ],
+        },
+      ],
+      educationTitle: "Formación",
+      education: [
+        { when: "En curso", what: "Ingeniería en Desarrollo de Software", where: "Universidad Ciudadana de Nuevo León" },
+        { when: "Carreras técnicas", what: "Desarrollo de Software · Paquetería Computacional", where: "UANL · FIME" },
+      ],
     },
     work: {
       title: "Proyectos",
-      intro: "Pocos, pero contados completos: el problema, lo que hice y qué cambió.",
+      intro: "Pocos, pero contados completos: el reto y lo que hice.",
       labels: { problem: "El reto", role: "Mi parte", result: "Resultado", stack: "Stack" },
       items: [
         {
           tag: "Empresa · 2025–2026",
           title: "Experimentación A/B para un retailer Fortune 500",
           problem:
-            "El equipo de Experimentation necesitaba lanzar y medir variantes de la interfaz en un sitio de altísimo tráfico, sin pegarle al rendimiento ni a la experiencia de compra.",
+            "El equipo de Experimentation necesitaba lanzar y medir variantes de la interfaz en un sitio de altísimo tráfico, sin afectar el rendimiento ni la experiencia de compra.",
           role:
-            "Sr React Engineer dentro del equipo en EE.UU., trabajando 100% en inglés. Construí las variantes en React, las serví desde el edge con Akamai EdgeWorkers y las configuré y medí con Adobe Target. Contenido manejado con Contentful.",
-          result: "[XX] experimentos lanzados · [métrica de impacto, p. ej. +X% conversión en una prueba o tiempo de salida reducido de X a Y]",
+            "Construí las variantes en React, las serví desde el edge con Akamai EdgeWorkers y las configuré y medí con Adobe Target. Contenido manejado con Contentful.",
           stack: ["React", "TypeScript", "Adobe Target", "Akamai EdgeWorkers", "Contentful"],
-          link: null as string | null,
-          linkLabel: "",
         },
         {
           tag: "Proyecto propio · 2026",
@@ -46,28 +161,25 @@ export const content = {
           problem:
             "Hacer un Reel o un lyric video por canción a mano se lleva horas. Quería un sistema que tome la canción y saque videos listos para publicar, sincronizados con el ritmo.",
           role:
-            "Lo diseñé y programé completo: plantillas en React con Remotion, análisis de audio para detectar beats y secciones, recortes automáticos de imágenes y un pipeline con FFmpeg que entrega versiones para YouTube, Reels y Spotify.",
-          result: "[N] videos publicados en YouTube · de [X horas] a [Y minutos] por Reel",
-          stack: ["React", "Remotion", "TypeScript", "FFmpeg", "Python", "librosa"],
-          link: "[link a un video o a la playlist]",
-          linkLabel: "Ver videos",
+            "Lo diseñé y programé completo: plantillas en React con Remotion, análisis de audio para detectar beats y secciones, y un pipeline con FFmpeg que entrega versiones para YouTube, Reels y Spotify.",
+          result: "Un motor reutilizable: cada canción nueva es un archivo de configuración, no código nuevo.",
+          stack: ["React", "Remotion", "TypeScript", "FFmpeg", "Python"],
         },
         {
-          tag: "Consultoría · 2020–2025",
-          title: "Frontend y backend para clientes internacionales",
-          problem: "[Describe en 1–2 líneas el proyecto más fuerte que hiciste en esta etapa: qué era y qué problema tenía el cliente.]",
+          tag: "Este sitio · 2026",
+          title: "damianlonare.com",
+          problem: "Un portafolio rápido, bilingüe y fácil de mantener, sin depender de un servidor.",
           role:
-            "Cinco años en una consultora de software desarrollando frontend y backend para clientes de distintos sectores. [Tu parte concreta en ese proyecto.]",
-          result: "[Qué cambió: algo que lanzaste, que mejoró o que se volvió más rápido.]",
-          stack: ["React", "Vue", "Node.js", "TypeScript"],
-          link: null as string | null,
-          linkLabel: "",
+            "Next.js con exportación estática, una ruta por idioma con su propio metadata, todo el contenido tipado en un solo archivo y una animación en Canvas que reacciona al cursor. Desplegado en Cloudflare Pages.",
+          stack: ["Next.js", "TypeScript", "Canvas", "Cloudflare Pages"],
+          link: links.repo,
+          linkLabel: "Ver el código",
         },
       ],
     },
     services: {
-      title: "Servicios",
-      intro: "Trabajo directo con negocios o como parte del equipo de una agencia.",
+      title: "Servicios freelance",
+      intro: "También tomo proyectos directos con negocios o como parte del equipo de una agencia.",
       items: [
         {
           title: "Frontend por proyecto",
@@ -75,7 +187,7 @@ export const content = {
         },
         {
           title: "Sitios y landing pages",
-          body: "Sitios rápidos, que se vean bien en celular y con SEO básico listo. En Next.js o WordPress, según lo que te convenga mantener.",
+          body: "Sitios rápidos, que se ven bien en celular y con SEO básico listo. En Next.js o WordPress, según lo que te convenga mantener.",
         },
         {
           title: "Video programático",
@@ -90,46 +202,92 @@ export const content = {
         { title: "Entrega", body: "Código, documentación y una ronda de ajustes incluida." },
       ],
     },
-    experience: {
-      title: "Experiencia",
-      items: [
-        { when: "2025 – presente", what: "Sr React Engineer", where: "Dexian México · asignado a retailer Fortune 500 de EE.UU." },
-        { when: "2020 – 2025", what: "Frontend / Backend Developer", where: "Sngular" },
-        { when: "En curso", what: "Ingeniería en Desarrollo de Software", where: "Universidad Ciudadana de Nuevo León" },
-        { when: "Formación técnica", what: "Desarrollo de Software · Paquetería Computacional", where: "UANL · FIME" },
-      ],
-      stackTitle: "Herramientas",
-      stack: [
-        "React", "TypeScript", "Next.js", "Vue", "Node.js", "Remotion", "Three.js",
-        "Contentful", "Adobe Target", "EdgeWorkers", "WordPress", "FFmpeg", "Python", "Git",
-      ],
-      about:
-        "Fuera del código produzco música como Lonare. Por eso me late tanto lo visual y lo que se mueve: muchos de mis experimentos con video empiezan con una canción mía.",
-      aboutLink: "Escuchar Lonare",
+    about: {
+      text: "Fuera del código produzco música como Lonare. Por eso me late tanto lo visual y lo que se mueve: muchos de mis experimentos con video empiezan con una canción mía.",
+      link: "Escuchar Lonare",
     },
     contact: {
-      title: "¿Tienes un proyecto?",
-      body: "Cuéntame qué necesitas y te respondo en menos de 24 horas.",
-      email: "Escríbeme",
+      title: "¿Hablamos?",
+      body: "Para una vacante o un proyecto: escríbeme y te respondo en menos de 24 horas.",
+      whatsapp: "WhatsApp",
+      email: "Correo",
       cv: "Descargar CV",
     },
     footer: "Hecho con Next.js y TypeScript por mí. Monterrey, México.",
-    switchLang: "EN",
+    footerRepo: "Código en GitHub",
   },
+
   en: {
-    nav: { work: "Work", services: "Services", experience: "Experience", contact: "Contact" },
+    path: "/en/",
+    altPath: "/",
+    switchLang: "ES",
+    switchLabel: "Leer en español",
+    meta: {
+      title: "Damian Longoria · Frontend Engineer (React / TypeScript)",
+      description:
+        "Frontend Engineer with 6+ years in React and TypeScript. A/B experimentation for a US Fortune 500 retailer. Remote from Monterrey, Mexico (UTC−6).",
+    },
+    nav: { skills: "Stack", experience: "Experience", work: "Work", services: "Services", contact: "Contact" },
     hero: {
+      status: "Open to remote roles and freelance projects",
       kicker: "Frontend Engineer · React / TypeScript",
       name: "Damian Longoria",
-      title: "I build web interfaces that feel right, and video that makes itself.",
-      sub: "6+ years in React. Most recently: A/B experimentation for a US retailer's high-traffic e-commerce site. On the side I build programmatic video tools with Remotion.",
-      ctaPrimary: "See work",
-      ctaSecondary: "Let's talk",
-      status: "Available for freelance projects and remote roles",
+      title: "I build React interfaces for high-traffic products.",
+      sub: "6+ years in frontend development. Most recently: A/B experimentation for a US Fortune 500 retailer's e-commerce site, on a team that works fully in English.",
+      ctaPrimary: "Get in touch",
+      ctaCv: "Download résumé",
+      ctaLinkedin: "LinkedIn",
+      ctaGithub: "GitHub",
+      facts: [
+        { label: "Experience", value: "6+ years in frontend" },
+        { label: "Focus", value: "React · TypeScript · Next.js" },
+        { label: "Languages", value: "Professional English · Native Spanish" },
+        { label: "Location", value: "Monterrey, Mexico · UTC−6 (US Central)" },
+        { label: "Work mode", value: "Remote" },
+      ],
+    },
+    skills: {
+      title: "Stack",
+      intro: "What I use at work, grouped by how deep I go.",
+      groups: [
+        { title: "Day to day", items: ["React", "TypeScript", "JavaScript", "Next.js", "HTML", "CSS"] },
+        { title: "Also work with", items: ["Vue", "Node.js", "Python", "WordPress", "Git"] },
+        { title: "Experimentation & content", items: ["Adobe Target", "Akamai EdgeWorkers", "Contentful"] },
+        { title: "Visual & video", items: ["Remotion", "Three.js", "Canvas", "FFmpeg"] },
+      ],
+    },
+    experience: {
+      title: "Experience",
+      items: [
+        {
+          when: "2025 – present",
+          what: "Sr React Engineer",
+          where: "Dexian México · assigned to a US Fortune 500 retailer",
+          points: [
+            "Experimentation team: I build React UI variants for A/B tests on a high-traffic e-commerce site.",
+            "I serve the variants at the edge with Akamai EdgeWorkers, and set them up and measure them in Adobe Target.",
+            "Day-to-day work in English with a US-based team.",
+          ],
+        },
+        {
+          when: "2020 – 2025",
+          what: "Frontend / Backend Developer",
+          where: "Sngular",
+          points: [
+            "Five years in software consulting, building frontend and backend for clients across industries.",
+            "Projects in React, Vue and Node.js.",
+          ],
+        },
+      ],
+      educationTitle: "Education",
+      education: [
+        { when: "In progress", what: "B.Eng. Software Development", where: "Universidad Ciudadana de Nuevo León" },
+        { when: "Technical degrees", what: "Software Development · Computer Applications", where: "UANL · FIME" },
+      ],
     },
     work: {
-      title: "Work",
-      intro: "A few projects, told in full: the problem, what I did, and what changed.",
+      title: "Selected work",
+      intro: "A few projects, told in full: the challenge and what I did.",
       labels: { problem: "Challenge", role: "My part", result: "Outcome", stack: "Stack" },
       items: [
         {
@@ -138,11 +296,8 @@ export const content = {
           problem:
             "The Experimentation team needed to ship and measure UI variants on a very high-traffic site without hurting performance or the shopping experience.",
           role:
-            "Sr React Engineer on the US team, working fully in English. I built the variants in React, served them at the edge with Akamai EdgeWorkers, and set up and measured them in Adobe Target. Content managed in Contentful.",
-          result: "[XX] experiments shipped · [impact metric, e.g. +X% conversion on one test or time-to-launch cut from X to Y]",
+            "I built the variants in React, served them at the edge with Akamai EdgeWorkers, and set up and measured them in Adobe Target. Content managed in Contentful.",
           stack: ["React", "TypeScript", "Adobe Target", "Akamai EdgeWorkers", "Contentful"],
-          link: null as string | null,
-          linkLabel: "",
         },
         {
           tag: "Own project · 2026",
@@ -150,28 +305,25 @@ export const content = {
           problem:
             "Making a Reel or lyric video by hand for every song takes hours. I wanted a system that takes a song and outputs ready-to-post videos synced to the beat.",
           role:
-            "Designed and built it end to end: React templates with Remotion, audio analysis to detect beats and sections, automatic image cutouts, and an FFmpeg pipeline that delivers versions for YouTube, Reels and Spotify.",
-          result: "[N] videos published on YouTube · from [X hours] to [Y minutes] per Reel",
-          stack: ["React", "Remotion", "TypeScript", "FFmpeg", "Python", "librosa"],
-          link: "[link to a video or playlist]",
-          linkLabel: "Watch videos",
+            "Designed and built it end to end: React templates with Remotion, audio analysis to detect beats and sections, and an FFmpeg pipeline that delivers versions for YouTube, Reels and Spotify.",
+          result: "A reusable engine: each new song is a config file, not new code.",
+          stack: ["React", "Remotion", "TypeScript", "FFmpeg", "Python"],
         },
         {
-          tag: "Consulting · 2020–2025",
-          title: "Frontend and backend for international clients",
-          problem: "[1–2 lines about your strongest project from this period: what it was and what problem the client had.]",
+          tag: "This site · 2026",
+          title: "damianlonare.com",
+          problem: "A fast, bilingual portfolio that's easy to maintain and needs no server.",
           role:
-            "Five years at a software consultancy building frontend and backend for clients across industries. [Your specific part in that project.]",
-          result: "[What changed: something you shipped, improved or sped up.]",
-          stack: ["React", "Vue", "Node.js", "TypeScript"],
-          link: null as string | null,
-          linkLabel: "",
+            "Next.js with static export, one route per language with its own metadata, all content typed in a single file, and a Canvas animation that reacts to the cursor. Deployed on Cloudflare Pages.",
+          stack: ["Next.js", "TypeScript", "Canvas", "Cloudflare Pages"],
+          link: links.repo,
+          linkLabel: "View the code",
         },
       ],
     },
     services: {
-      title: "Services",
-      intro: "I work directly with businesses or as part of an agency team.",
+      title: "Freelance services",
+      intro: "I also take on projects directly with businesses or as part of an agency team.",
       items: [
         {
           title: "Frontend contracting",
@@ -194,30 +346,18 @@ export const content = {
         { title: "Delivery", body: "Code, docs and one round of tweaks included." },
       ],
     },
-    experience: {
-      title: "Experience",
-      items: [
-        { when: "2025 – present", what: "Sr React Engineer", where: "Dexian México · assigned to a US Fortune 500 retailer" },
-        { when: "2020 – 2025", what: "Frontend / Backend Developer", where: "Sngular" },
-        { when: "Ongoing", what: "B.Eng. Software Development", where: "Universidad Ciudadana de Nuevo León" },
-        { when: "Technical degrees", what: "Software Development · Computer Applications", where: "UANL · FIME" },
-      ],
-      stackTitle: "Tools",
-      stack: [
-        "React", "TypeScript", "Next.js", "Vue", "Node.js", "Remotion", "Three.js",
-        "Contentful", "Adobe Target", "EdgeWorkers", "WordPress", "FFmpeg", "Python", "Git",
-      ],
-      about:
-        "Outside of code I make music as Lonare. That's why I'm into visual, moving things: a lot of my video experiments start with one of my songs.",
-      aboutLink: "Listen to Lonare",
+    about: {
+      text: "Outside of code I make music as Lonare. That's why I'm into visual, moving things: a lot of my video experiments start with one of my songs.",
+      link: "Listen to Lonare",
     },
     contact: {
-      title: "Got a project?",
-      body: "Tell me what you need and I'll get back to you within 24 hours.",
-      email: "Email me",
-      cv: "Download CV",
+      title: "Let's talk",
+      body: "For a role or a project: message me and I'll get back to you within 24 hours.",
+      whatsapp: "WhatsApp",
+      email: "Email",
+      cv: "Download résumé",
     },
     footer: "Built with Next.js and TypeScript by me. Monterrey, Mexico.",
-    switchLang: "ES",
+    footerRepo: "Source on GitHub",
   },
 };
