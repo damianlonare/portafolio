@@ -39,6 +39,8 @@ export default function Waveform() {
       const barW = 3;
       const count = Math.floor(w / gap);
       pointer.active *= 0.97;
+      const light = document.documentElement.dataset.theme === "light";
+      const baseL = light ? 46 : 62;
 
       for (let i = 0; i < count; i++) {
         const x = i * gap;
@@ -54,7 +56,7 @@ export default function Waveform() {
         const barH = Math.min(h * 0.92, amp * h);
         const y = (h - barH) / 2;
         const hue = 262 + (i / count) * 40;
-        ctx.fillStyle = `hsla(${hue}, 85%, ${62 + amp * 12}%, ${0.35 + amp * 0.6})`;
+        ctx.fillStyle = `hsla(${hue}, 85%, ${baseL + amp * 12}%, ${(light ? 0.5 : 0.35) + amp * 0.6})`;
         ctx.fillRect(x, y, barW, barH);
       }
       if (!reduce) raf = requestAnimationFrame(draw);

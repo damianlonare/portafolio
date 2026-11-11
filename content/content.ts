@@ -32,6 +32,7 @@ export type Content = {
   altPath: string;
   switchLang: string;
   switchLabel: string;
+  theme: { toLight: string; toDark: string };
   meta: { title: string; description: string };
   nav: { skills: string; experience: string; work: string; services: string; contact: string };
   hero: {
@@ -78,6 +79,7 @@ export const content: Record<Lang, Content> = {
     altPath: "/en/",
     switchLang: "EN",
     switchLabel: "Read in English",
+    theme: { toLight: "Cambiar a tema claro", toDark: "Cambiar a tema oscuro" },
     meta: {
       title: "Damian Longoria · Frontend Engineer (React / TypeScript)",
       description:
@@ -222,6 +224,7 @@ export const content: Record<Lang, Content> = {
     altPath: "/",
     switchLang: "ES",
     switchLabel: "Leer en español",
+    theme: { toLight: "Switch to light theme", toDark: "Switch to dark theme" },
     meta: {
       title: "Damian Longoria · Frontend Engineer (React / TypeScript)",
       description:

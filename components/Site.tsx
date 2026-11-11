@@ -1,3 +1,4 @@
+import ThemeToggle from "@/components/ThemeToggle";
 import Waveform from "@/components/Waveform";
 import { content, links, type Lang } from "@/content/content";
 
@@ -20,6 +21,7 @@ export default function Site({ lang }: { lang: Lang }) {
           <a href="#services">{c.nav.services}</a>
           <a href="#contact">{c.nav.contact}</a>
         </nav>
+        <ThemeToggle labels={c.theme} />
         <a className="lang" href={c.altPath} hrefLang={lang === "es" ? "en" : "es"} aria-label={c.switchLabel}>
           {c.switchLang}
         </a>
