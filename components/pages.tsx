@@ -1,5 +1,51 @@
 import { ContactBand, Footer, Header, Icon, ext, waHref } from "@/components/Chrome";
-import { clients, hire, home, links, routes, software, ui, type Lang } from "@/content/content";
+import { clients, demos, hire, home, links, routes, software, ui, type Lang } from "@/content/content";
+
+function Demos({ lang, soft = false }: { lang: Lang; soft?: boolean }) {
+  const c = demos[lang];
+  const body = (
+    <>
+      <h2 id="demos-t" className="h2">
+        {c.title}
+      </h2>
+      <p className="sub">{c.sub}</p>
+      <div className="row">
+        {c.items.map((d) => (
+          <article key={d.id} id={d.id} className="card outline demo">
+            <a className="demo-shot" href={d.live} {...ext} aria-label={`${c.live}: ${d.title}`}>
+              <img src={d.img} alt={d.alt} width={1200} height={750} loading="lazy" />
+            </a>
+            <span className="tag">{d.tag}</span>
+            <h3>{d.title}</h3>
+            <p>{d.body}</p>
+            <ul className="chips">
+              {d.stack.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
+            <div className="btnrow demo-actions">
+              <a className="btn primary" href={d.live} {...ext}>
+                {c.live} ↗
+              </a>
+              <a className="btn" href={d.code} {...ext}>
+                {c.code}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </>
+  );
+  return soft ? (
+    <section id="demos" aria-labelledby="demos-t" className="soft">
+      <div className="wrap section-in">{body}</div>
+    </section>
+  ) : (
+    <section id="demos" aria-labelledby="demos-t" className="wrap section">
+      {body}
+    </section>
+  );
+}
 
 export function HomePage({ lang }: { lang: Lang }) {
   const c = home[lang];
@@ -148,7 +194,9 @@ export function SoftwarePage({ lang }: { lang: Lang }) {
           </div>
         </section>
 
-        <section aria-labelledby="faq-t" className="wrap section-bottom">
+        <Demos lang={lang} soft />
+
+        <section aria-labelledby="faq-t" className="wrap section">
           <h2 id="faq-t" className="h2">
             {c.faqTitle}
           </h2>
@@ -274,6 +322,8 @@ export function HirePage({ lang }: { lang: Lang }) {
             ))}
           </div>
         </section>
+
+        <Demos lang={lang} soft />
 
         <ContactBand
           title={c.contactTitle}

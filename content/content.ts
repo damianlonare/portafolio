@@ -401,3 +401,68 @@ export const hire = {
     whatsappText: "Hola Damian, te contacto por una vacante de desarrollo de software.",
   },
 };
+
+// Demos en vivo: proyectos de muestra que se pueden abrir y probar.
+// Se muestran en Software y en la página para reclutadores.
+export const demos = {
+  es: {
+    title: "Demos en vivo",
+    sub: "Proyectos de muestra que puedes abrir y probar. No se cobra nada.",
+    live: "Ver demo",
+    code: "Ver código",
+    items: [
+      {
+        id: "plugin-store",
+        tag: "Tienda en línea · Software",
+        title: "Tienda de plugins de audio",
+        body: "Una tienda completa de punta a punta: catálogo con filtros, carrito con descuento por combo, pago con Stripe y licencias que el producto valida sin internet.",
+        stack: ["Next.js", "TypeScript", "Stripe", "Cloudflare Workers"],
+        img: "/demos/plugin-store.jpg",
+        alt: "Página de inicio de la tienda de plugins de audio",
+        live: "https://plugins-demo.damianlonare.com/",
+        code: "https://github.com/damianlonare/lonare-plugin-store",
+      },
+      {
+        id: "beatvault",
+        tag: "Tienda en línea · Música",
+        title: "BeatVault",
+        body: "Tienda de beats, stems y servicios de mezcla: catálogo con licencias, carrito, área de cliente y panel del estudio. 18 pantallas navegables.",
+        stack: ["HTML", "Tailwind CSS", "Google Stitch", "Cloudflare Pages"],
+        img: "/demos/beatvault.jpg",
+        alt: "Página de inicio de BeatVault, tienda de beats",
+        live: "https://beats-demo.damianlonare.com/",
+        code: "https://github.com/damianlonare/beatvault-demo",
+      },
+    ],
+  },
+  en: {
+    title: "Live demos",
+    sub: "Sample projects you can open and click through. Nothing gets charged.",
+    live: "Open demo",
+    code: "View code",
+    items: [
+      {
+        id: "plugin-store",
+        tag: "Online store · Software",
+        title: "Audio plugin store",
+        body: "A complete store, end to end: filterable catalog, cart with a bundle discount, Stripe checkout, and license keys the product verifies offline.",
+        stack: ["Next.js", "TypeScript", "Stripe", "Cloudflare Workers"],
+        img: "/demos/plugin-store.jpg",
+        alt: "Home page of the audio plugin store",
+        live: "https://plugins-demo.damianlonare.com/",
+        code: "https://github.com/damianlonare/lonare-plugin-store",
+      },
+      {
+        id: "beatvault",
+        tag: "Online store · Music",
+        title: "BeatVault",
+        body: "A store for beats, stems and mixing services: catalog with licenses, cart, client area and studio dashboard. 18 clickable screens.",
+        stack: ["HTML", "Tailwind CSS", "Google Stitch", "Cloudflare Pages"],
+        img: "/demos/beatvault.jpg",
+        alt: "Home page of BeatVault, a beat store",
+        live: "https://beats-demo.damianlonare.com/",
+        code: "https://github.com/damianlonare/beatvault-demo",
+      },
+    ],
+  },
+};
