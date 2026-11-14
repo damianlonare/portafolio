@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "refresh:music": "node scripts/refresh-music-video.mjs",
     "start": "npx serve out"
   },
   "dependencies": {

@@ -1,5 +1,6 @@
 import ThemeToggle from "@/components/ThemeToggle";
 import { links, routes, ui, whatsappLink, type Lang, type PageKey } from "@/content/content";
+import { LINKS_PATH } from "@/content/link-page";
 
 export const ext = { target: "_blank", rel: "noreferrer" } as const;
 
@@ -45,6 +46,7 @@ export function Footer({ lang }: { lang: Lang }) {
           <a href={links.github} {...ext}>
             GitHub
           </a>
+          <a href={LINKS_PATH}>Links</a>
         </span>
       </div>
     </footer>
