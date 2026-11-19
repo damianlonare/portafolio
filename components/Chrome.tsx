@@ -20,6 +20,7 @@ export function Header({ lang, page }: { lang: Lang; page: PageKey }) {
         </a>
         <nav aria-label={t.navLabel} className="mainnav">
           {item("software", t.nav.software)}
+          {item("demos", t.nav.demos)}
           {item("hire", t.nav.hire)}
           <a href="#contacto">{t.nav.contact}</a>
         </nav>

@@ -2,7 +2,7 @@
 // Las páginas solo acomodan este contenido; para cambiar un texto o un precio, edita este archivo.
 
 export type Lang = "es" | "en";
-export type PageKey = "home" | "software" | "hire";
+export type PageKey = "home" | "software" | "demos" | "hire";
 
 export const SITE_URL = "https://damianlonare.com";
 
@@ -22,13 +22,14 @@ export const links = {
 export const routes: Record<PageKey, Record<Lang, string>> = {
   home: { es: "/", en: "/en/" },
   software: { es: "/software/", en: "/en/software/" },
+  demos: { es: "/demos/", en: "/en/demos/" },
   hire: { es: "/contratar/", en: "/en/hire/" },
 };
 
 export const ui = {
   es: {
     brand: "Damian Lonare",
-    nav: { software: "Software", hire: "Para reclutadores", contact: "Contacto" },
+    nav: { software: "Software", demos: "Demos", hire: "Para reclutadores", contact: "Contacto" },
     navLabel: "Principal",
     switchLang: "EN",
     switchLabel: "Read in English",
@@ -38,7 +39,7 @@ export const ui = {
   },
   en: {
     brand: "Damian Lonare",
-    nav: { software: "Software", hire: "For recruiters", contact: "Contact" },
+    nav: { software: "Software", demos: "Demos", hire: "For recruiters", contact: "Contact" },
     navLabel: "Main",
     switchLang: "ES",
     switchLabel: "Leer en español",
@@ -71,6 +72,18 @@ export const meta: Record<PageKey, Record<Lang, { title: string; description: st
       title: "Websites, online stores and automation · Damian Lonare",
       description:
         "Landing pages from $4,500 MXN, 5-page websites from $8,000 MXN, online stores from $6,500 MXN, custom systems and automation for businesses.",
+    },
+  },
+  demos: {
+    es: {
+      title: "Demos en vivo · Damian Lonare",
+      description:
+        "Proyectos de muestra que puedes abrir y probar: una tienda de plugins de audio, una tienda de beats y una app del clima con pronóstico real.",
+    },
+    en: {
+      title: "Live demos · Damian Lonare",
+      description:
+        "Sample projects you can open and try: an audio plugin store, a beat store and a weather app with real forecasts.",
     },
   },
   hire: {
@@ -404,12 +417,23 @@ export const hire = {
 
 // Demos en vivo: proyectos de muestra que se pueden abrir y probar.
 // Se muestran en Software y en la página para reclutadores.
+// `code` en "" oculta el botón "Ver código" (por ejemplo, si el repo es privado).
 export const demos = {
   es: {
     title: "Demos en vivo",
     sub: "Proyectos de muestra que puedes abrir y probar. No se cobra nada.",
     live: "Ver demo",
     code: "Ver código",
+    page: {
+      kicker: "Demos en vivo",
+      title: "Proyectos que puedes abrir y probar.",
+      sub: "Cada demo es un proyecto real, publicado y funcionando. Ábrelo, dale clic a todo y, si te gusta algo, hacemos lo mismo para tu negocio.",
+      gridTitle: "Todos los demos",
+      contactTitle: "¿Quieres algo así para tu negocio?",
+      contactBody: "Cuéntame qué necesitas y te respondo en menos de 24 horas.",
+      contactCta: "Escríbeme por WhatsApp",
+      whatsappText: "Hola Damian, vi tus demos y me interesa platicar sobre un proyecto.",
+    },
     items: [
       {
         id: "plugin-store",
@@ -433,6 +457,17 @@ export const demos = {
         live: "https://beats-demo.damianlonare.com/",
         code: "https://github.com/damianlonare/beatvault-demo",
       },
+      {
+        id: "weather",
+        tag: "App web · Clima",
+        title: "Qwen Weather",
+        body: "Pronóstico real de cualquier ciudad con una foto de fondo que cambia con el clima, la mejor hora para correr o lavar el carro, y una tarjeta para compartir en historias. En español e inglés.",
+        stack: ["React", "Node.js", "Express", "Open-Meteo", "Render"],
+        img: "/demos/weather.jpg",
+        alt: "Qwen Weather mostrando el clima actual y el pronóstico de 5 días de Monterrey",
+        live: "https://weather.damianlonare.com/",
+        code: "",
+      },
     ],
   },
   en: {
@@ -440,6 +475,16 @@ export const demos = {
     sub: "Sample projects you can open and click through. Nothing gets charged.",
     live: "Open demo",
     code: "View code",
+    page: {
+      kicker: "Live demos",
+      title: "Projects you can open and try.",
+      sub: "Each demo is a real project, published and running. Open it, click everything, and if you like something, we can build the same for your business.",
+      gridTitle: "All demos",
+      contactTitle: "Want something like this for your business?",
+      contactBody: "Tell me what you need and I'll reply within 24 hours.",
+      contactCta: "Message me on WhatsApp",
+      whatsappText: "Hi Damian, I saw your demos and I'd like to talk about a project.",
+    },
     items: [
       {
         id: "plugin-store",
@@ -462,6 +507,17 @@ export const demos = {
         alt: "Home page of BeatVault, a beat store",
         live: "https://beats-demo.damianlonare.com/",
         code: "https://github.com/damianlonare/beatvault-demo",
+      },
+      {
+        id: "weather",
+        tag: "Web app · Weather",
+        title: "Qwen Weather",
+        body: "Real forecasts for any city, with a background photo that changes with the weather, the best time to go for a run or wash the car, and a card to share in stories. In English and Spanish.",
+        stack: ["React", "Node.js", "Express", "Open-Meteo", "Render"],
+        img: "/demos/weather.jpg",
+        alt: "Qwen Weather showing current weather and the 5-day forecast for Monterrey",
+        live: "https://weather.damianlonare.com/",
+        code: "",
       },
     ],
   },
