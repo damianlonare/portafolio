@@ -1,14 +1,14 @@
 import { ContactBand, Footer, Header, Icon, ext, waHref } from "@/components/Chrome";
 import { clients, demos, hire, home, links, routes, software, ui, type Lang } from "@/content/content";
 
-function Demos({ lang, soft = false }: { lang: Lang; soft?: boolean }) {
+function Demos({ lang, soft = false, title }: { lang: Lang; soft?: boolean; title?: string }) {
   const c = demos[lang];
   const body = (
     <>
       <h2 id="demos-t" className="h2">
-        {c.title}
+        {title ?? c.title}
       </h2>
-      <p className="sub">{c.sub}</p>
+      {!title && <p className="sub">{c.sub}</p>}
       <div className="row">
         {c.items.map((d) => (
           <article key={d.id} id={d.id} className="card outline demo">
@@ -27,9 +27,11 @@ function Demos({ lang, soft = false }: { lang: Lang; soft?: boolean }) {
               <a className="btn primary" href={d.live} {...ext}>
                 {c.live} ↗
               </a>
-              <a className="btn" href={d.code} {...ext}>
-                {c.code}
-              </a>
+              {d.code && (
+                <a className="btn" href={d.code} {...ext}>
+                  {c.code}
+                </a>
+              )}
             </div>
           </article>
         ))}
@@ -211,6 +213,32 @@ export function SoftwarePage({ lang }: { lang: Lang }) {
         </section>
 
         <ContactBand title={c.contactTitle} body={c.contactBody} primary={{ label: c.contactCta, href: quote }} />
+      </main>
+      <Footer lang={lang} />
+    </>
+  );
+}
+
+export function DemosPage({ lang }: { lang: Lang }) {
+  const c = demos[lang].page;
+  return (
+    <>
+      <Header lang={lang} page="demos" />
+      <main>
+        <section className="wrap hero">
+          <p className="kicker">{c.kicker}</p>
+          <h1 className="narrow">{c.title}</h1>
+          <p className="lead">{c.sub}</p>
+        </section>
+
+        <Demos lang={lang} soft title={c.gridTitle} />
+
+        <div className="band-gap" />
+        <ContactBand
+          title={c.contactTitle}
+          body={c.contactBody}
+          primary={{ label: c.contactCta, href: waHref(c.whatsappText) }}
+        />
       </main>
       <Footer lang={lang} />
     </>
