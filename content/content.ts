@@ -78,12 +78,12 @@ export const meta: Record<PageKey, Record<Lang, { title: string; description: st
     es: {
       title: "Demos en vivo · Damian Lonare",
       description:
-        "Proyectos de muestra que puedes abrir y probar: una tienda de plugins de audio, una tienda de beats y una app del clima con pronóstico real.",
+        "Proyectos de muestra que puedes abrir y probar: una tienda de plugins de audio, una tienda de beats y una app del clima con pronóstico real, para web y Android.",
     },
     en: {
       title: "Live demos · Damian Lonare",
       description:
-        "Sample projects you can open and try: an audio plugin store, a beat store and a weather app with real forecasts.",
+        "Sample projects you can open and try: an audio plugin store, a beat store and a weather app with real forecasts, on the web and Android.",
     },
   },
   hire: {
@@ -418,12 +418,14 @@ export const hire = {
 // Demos en vivo: proyectos de muestra que se pueden abrir y probar.
 // Se muestran en Software y en la página para reclutadores.
 // `code` en "" oculta el botón "Ver código" (por ejemplo, si el repo es privado).
+// `app` en "" oculta el botón de la app móvil.
 export const demos = {
   es: {
     title: "Demos en vivo",
     sub: "Proyectos de muestra que puedes abrir y probar. No se cobra nada.",
     live: "Ver demo",
     code: "Ver código",
+    app: "App para Android",
     page: {
       kicker: "Demos en vivo",
       title: "Proyectos que puedes abrir y probar.",
@@ -445,6 +447,7 @@ export const demos = {
         alt: "Página de inicio de la tienda de plugins de audio",
         live: "https://plugins-demo.damianlonare.com/",
         code: "https://github.com/damianlonare/lonare-plugin-store",
+        app: "",
       },
       {
         id: "beatvault",
@@ -456,17 +459,19 @@ export const demos = {
         alt: "Página de inicio de BeatVault, tienda de beats",
         live: "https://beats-demo.damianlonare.com/",
         code: "https://github.com/damianlonare/beatvault-demo",
+        app: "",
       },
       {
         id: "weather",
-        tag: "App web · Clima",
-        title: "Qwen Weather",
-        body: "Pronóstico real de cualquier ciudad con una foto de fondo que cambia con el clima, la mejor hora para correr o lavar el carro, y una tarjeta para compartir en historias. En español e inglés.",
-        stack: ["React", "Node.js", "Express", "Open-Meteo", "Render"],
+        tag: "App web y Android · Clima",
+        title: "Postal",
+        body: "Pronóstico real de cualquier ciudad con una foto de fondo que cambia con el clima, la mejor hora para correr o lavar el carro, y una tarjeta para compartir en historias. En la web y como app nativa para Android. En español e inglés.",
+        stack: ["React", "React Native", "Expo", "Node.js", "Open-Meteo"],
         img: "/demos/weather.jpg",
-        alt: "Qwen Weather mostrando el clima actual y el pronóstico de 5 días de Monterrey",
+        alt: "Postal mostrando el clima actual y el pronóstico de 5 días de Monterrey",
         live: "https://weather.damianlonare.com/",
         code: "",
+        app: "https://expo.dev/accounts/damianlonare/projects/postal/builds/a59cc2a9-96e1-49e2-a64e-5911c228df69",
       },
     ],
   },
@@ -475,6 +480,7 @@ export const demos = {
     sub: "Sample projects you can open and click through. Nothing gets charged.",
     live: "Open demo",
     code: "View code",
+    app: "Android app",
     page: {
       kicker: "Live demos",
       title: "Projects you can open and try.",
@@ -496,6 +502,7 @@ export const demos = {
         alt: "Home page of the audio plugin store",
         live: "https://plugins-demo.damianlonare.com/",
         code: "https://github.com/damianlonare/lonare-plugin-store",
+        app: "",
       },
       {
         id: "beatvault",
@@ -507,17 +514,19 @@ export const demos = {
         alt: "Home page of BeatVault, a beat store",
         live: "https://beats-demo.damianlonare.com/",
         code: "https://github.com/damianlonare/beatvault-demo",
+        app: "",
       },
       {
         id: "weather",
-        tag: "Web app · Weather",
-        title: "Qwen Weather",
-        body: "Real forecasts for any city, with a background photo that changes with the weather, the best time to go for a run or wash the car, and a card to share in stories. In English and Spanish.",
-        stack: ["React", "Node.js", "Express", "Open-Meteo", "Render"],
+        tag: "Web & Android app · Weather",
+        title: "Postal",
+        body: "Real forecasts for any city, with a background photo that changes with the weather, the best time to go for a run or wash the car, and a card to share in stories. On the web and as a native Android app. In English and Spanish.",
+        stack: ["React", "React Native", "Expo", "Node.js", "Open-Meteo"],
         img: "/demos/weather.jpg",
-        alt: "Qwen Weather showing current weather and the 5-day forecast for Monterrey",
+        alt: "Postal showing current weather and the 5-day forecast for Monterrey",
         live: "https://weather.damianlonare.com/",
         code: "",
+        app: "https://expo.dev/accounts/damianlonare/projects/postal/builds/a59cc2a9-96e1-49e2-a64e-5911c228df69",
       },
     ],
   },
