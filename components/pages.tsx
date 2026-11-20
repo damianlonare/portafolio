@@ -27,6 +27,11 @@ function Demos({ lang, soft = false, title }: { lang: Lang; soft?: boolean; titl
               <a className="btn primary" href={d.live} {...ext}>
                 {c.live} ↗
               </a>
+              {d.app && (
+                <a className="btn" href={d.app} {...ext}>
+                  {c.app} ↗
+                </a>
+              )}
               {d.code && (
                 <a className="btn" href={d.code} {...ext}>
                   {c.code}
