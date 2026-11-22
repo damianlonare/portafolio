@@ -1,6 +1,7 @@
 {
   "name": "portafolio-damian",
   "version": "1.0.0",
+  "description": "Bilingual portfolio of Pedro Damian Longoria (Damian Lonare), senior software engineer in Monterrey. Next.js static export for Cloudflare Pages.",
   "private": true,
   "scripts": {
     "dev": "next dev",
