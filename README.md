@@ -39,7 +39,7 @@ An empty string in `content/content.ts` hides that button. `links.email` is stil
 
 ## Run locally
 
-Node.js 22.
+Node.js 22, pinned in [`.nvmrc`](.nvmrc).
 
 ```bash
 npm install
@@ -48,17 +48,19 @@ npm run build    # writes the static site to /out
 npm start        # serves /out
 ```
 
+`npm start` runs `npx serve out`. `serve` is not a dependency of this repo, so the first run downloads it and needs a network connection.
+
 ## Build and deploy
 
-Cloudflare Pages builds this repository and publishes the `out` directory produced by the static export.
+Cloudflare Pages builds this repository and publishes the `out` directory produced by the static export. Pages uses the Node version in `.nvmrc` unless the project sets `NODE_VERSION`.
 
 | Setting | Value |
 | --- | --- |
 | Build command | `npm run build` |
 | Output directory | `out` |
-| Node.js | 22 |
+| Node.js | 22, from `.nvmrc` |
 
-Each production build refreshes the featured video on `/links` from YouTube before the pages are generated. If YouTube does not respond, the last good snapshot in `content/music-video.json` stays in place. [`.github/workflows/refresh-music-video.yml`](.github/workflows/refresh-music-video.yml) commits a new snapshot every six hours when the pick changes, which is what gets that section rebuilt.
+Every `npm run build` refreshes the featured video on `/links` from YouTube before the pages are generated, including a build on your own machine. If the pick changed, that writes `content/music-video.json`, so a local build can leave the file modified. If YouTube does not respond, the last good snapshot stays in place. [`.github/workflows/refresh-music-video.yml`](.github/workflows/refresh-music-video.yml) commits a new snapshot every six hours when the pick changes, which is what gets that section rebuilt.
 
 ## Screenshots
 
